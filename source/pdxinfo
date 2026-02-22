@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 name=puppet theatre
 author=ceara
 description=a hotel i love hotels
 bundleID=com.ceara.puppet-theatre
+=======
+name=capybara adventure
+author=ceara
+description=capybara dodges rock (so cool)
+bundleID=com.ceara.capybara-adventure
+>>>>>>> refs/remotes/origin/main
 version=1.0.0
 buildNumber=1

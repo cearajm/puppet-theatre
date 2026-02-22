@@ -16,7 +16,6 @@ player:add()
 
 local function init()
     print("hi")
-
 end
 
 function pd.update()
