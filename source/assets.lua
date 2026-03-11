@@ -7,7 +7,10 @@ SpriteImage = {
     -- player = "images/capybara"
     bullet = "assets/images/ham_sprite",
     player = "assets/images/ham_sprite",
-    enemy = "assets/images/capybara"
+    enemy = "assets/images/capybara",
+
+    concierge = "assets/images/stoat",
+    staff = "assets/images/rock"
 }
 
 Audio = {
