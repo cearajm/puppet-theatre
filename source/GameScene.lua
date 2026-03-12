@@ -7,7 +7,7 @@ class("GameScene").extends()
 
 function GameScene:init()
     -- level name == name in ldtk
-    self:showLevel("Level_0")
+    self:showLevel("Level_1")
 end
 
 

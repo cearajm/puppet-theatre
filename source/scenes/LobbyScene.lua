@@ -14,14 +14,14 @@ class("LobbyScene").extends(NobleScene)
 
 local scene = LobbyScene
 local player = Player()
-scene.backgroundColor = Graphics.kColorBlack
+scene.backgroundColor = Graphics.kColorWhite
 
 
 
 -- create game scene: display sprites
 function scene:init(__sceneProperties)
 	scene.super.init(self)
-	self.backgroundColor = Graphics.kColorWhite
+	-- self.backgroundColor = Graphics.kColorWhite
 
 	-- create map sprite, and add player sprite
 	GameScene()
