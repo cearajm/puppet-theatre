@@ -3,7 +3,7 @@ local gfx <const> = pd.graphics
 local sfx <const> = pd.sound.sampleplayer
 
 -- player class
-local imagePlayer <const> = gfx.image.new(SpriteImage.player)
+-- local imagePlayer <const> = gfx.image.new(SpriteImage.player)
 -- class("Player").extends(gfx.sprite)
 class("Player").extends(AnimatedSprite)
 
@@ -29,7 +29,8 @@ function Player:init()
     -- print(startX)
 
     -- NEW
-    local playerImageTable = gfx.imagetable.new("assets/images/player-table-16-16")
+    -- local playerImageTable = gfx.imagetable.new("assets/images/player-table-16-16")
+    local playerImageTable = gfx.imagetable.new("assets/images/puppet-table-32-32")
     Player.super.init(self, playerImageTable)
 
     self:addState("idle", 1, 1)
