@@ -10,15 +10,18 @@ import 'CoreLibs/timer'
 -- libraries
 import 'libraries/AnimatedSprite'
 import 'libraries/LDtk'
+import 'libraries/panels/Panels'
+import 'libraries/noble/Noble'
+import 'libraries/noble/utilities/Utilities'
 
 -- game
 import 'GameScene'
-
-import 'libraries/noble/Noble'
-import 'libraries/noble/utilities/Utilities'
--- import 'utilities/Utilities'
 import 'scenes/LobbyScene'
 
+-- comic
+import 'myComicData.lua'
+
+-- mine
 import 'assets'
 import 'sprites'
 
@@ -36,12 +39,21 @@ local gfx <const> = pd.graphics
 -- local lobbyScene = Noble.new(LobbyScene)
 -- GameScene()
 
+comicData = myComicData
+
 local function init()
     print("hi")
     Noble.new(LobbyScene)
+    -- Panels.start(comicData)
+
+
+	
 
     -- local player = Player()
     -- noblescene:addSprite(player)
+    
+
+
     
 end
 

@@ -53,6 +53,12 @@ function scene:update()
 	
 	Graphics.drawTextAligned("hii", 200, 120, kTextAlignment.center)
 
+	-- if pd.buttonIsPressed(pd.kButtonA) then
+        
+	-- 	print("asdfasdf")
+    -- end
+	
+
 end
 
 -- This runs once per frame, and is meant for drawing code.
@@ -91,7 +97,7 @@ scene.inputHandler = {
 	-- A button
 	--
 	AButtonDown = function()			-- Runs once when button is pressed.
-		-- Your code here
+	
 	end,
 	AButtonHold = function()			-- Runs every frame while the player is holding button down.
 		-- Your code here

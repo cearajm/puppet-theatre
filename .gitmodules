@@ -2,3 +2,6 @@
 	path = source/libraries/noble
 	url = https://github.com/NobleRobot/NobleEngine.git
 
+[submodule "panels"]
+	path = source/libraries/panels
+	url = https://cadin@github.com/cadin/panels.git

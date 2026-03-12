@@ -38,6 +38,7 @@ function Player:init()
     self:playAnimation()
 
     -- sprite properties
+    -- self:setScale(2)
     self:moveTo(x, y)
     self:setZIndex(100)
     self:setTag(1)
