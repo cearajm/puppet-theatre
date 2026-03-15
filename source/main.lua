@@ -1,6 +1,6 @@
--- import "CoreLibs/graphics"
--- import "CoreLibs/sprites"
--- import "CoreLibs/crank"
+import "CoreLibs/graphics"
+import "CoreLibs/sprites"
+import "CoreLibs/crank"
 
 import 'CoreLibs/object'
 import 'CoreLibs/graphics'
@@ -44,17 +44,10 @@ comicData = myComicData
 local function init()
     print("hi")
     Noble.new(LobbyScene)
-    -- Panels.start(comicData)
-
-
-	
 
     -- local player = Player()
     -- noblescene:addSprite(player)
-    
 
-
-    
 end
 
 function pd.update()
@@ -62,5 +55,6 @@ function pd.update()
     gfx.sprite.update()
     pd.timer.updateTimers()
 end
+
 
 init()
