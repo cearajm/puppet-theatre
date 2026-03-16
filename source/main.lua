@@ -24,6 +24,7 @@ import 'myComicData.lua'
 -- mine
 import 'assets'
 import 'sprites'
+import 'menu'
 
 
 local pd <const> = playdate
@@ -42,8 +43,10 @@ local gfx <const> = pd.graphics
 comicData = myComicData
 
 local function init()
-    print("hi")
-    Noble.new(LobbyScene)
+    -- print("hi")
+    -- Noble.new(LobbyScene)
+    showMenu()
+
 
     -- local player = Player()
     -- noblescene:addSprite(player)

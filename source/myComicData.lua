@@ -9,9 +9,6 @@ myComicData = { -- a list of SEQUENCES for this comic
 			{ -- Panel 1
 				layers = {
 					{image = "thumbs/panel_2.png"},
-					-- {image = "thumbs/panel_3.png"},
-					-- {image = "thumbs/panel_5.png"},
-					-- {image = "thumbs/panel_1.png"}
 				}
 			},
 
