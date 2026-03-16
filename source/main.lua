@@ -39,13 +39,14 @@ local gfx <const> = pd.graphics
 
 -- local lobbyScene = Noble.new(LobbyScene)
 -- GameScene()
+local textbox = Textbox()
 
 comicData = myComicData
 
 local function init()
     -- print("hi")
     -- Noble.new(LobbyScene)
-    showMenu()
+    -- local textbox = Textbox()
 
 
     -- local player = Player()
@@ -57,6 +58,8 @@ function pd.update()
     -- print("hi it's puppet theatre")
     gfx.sprite.update()
     pd.timer.updateTimers()
+
+    textbox:addSprite()
 end
 
 

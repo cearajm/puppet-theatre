@@ -1,55 +1,55 @@
--- local pd <const> = playdate
--- local gfx <const> = pd.graphics
--- local sfx <const> = pd.sound.sampleplayer
-
--- -- player class
--- -- local imagePlayer <const> = gfx.image.new(SpriteImage.player)
--- -- class("Player").extends(gfx.sprite)
--- class("Textbox").extends(AnimatedSprite)
-
 local pd <const> = playdate
 local gfx <const> = pd.graphics
+local sfx <const> = pd.sound.sampleplayer
 
---[[ 
-This handles the start and game over screens.
-Does not handle the score or ammo stock displays. those are in the player class. cus i just dumped it all in there
-]]
+-- player class
+-- local imagePlayer <const> = gfx.image.new(SpriteImage.player)
+-- class("Player").extends(gfx.sprite)
 
-
-
-gfx.setFontFamily(gfx.getFont(gfx.font.kVariantBold))
-
-local spriteTitle = gfx.sprite.new()
-local spriteButton = gfx.sprite.spriteWithText("press A to start", 400, 240)
-
--- create title as an image
-local imageSpriteTitle = gfx.image.new(200, 120)
-
--- draw text on the image (centered)
--- push: save imageSpriteTitle as the current image to draw to, with draw functions
-gfx.pushContext(imageSpriteTitle)
-gfx.drawTextAligned("pancake 2: vengeance", 100, 60, kTextAlignment.center)
-gfx.popContext()  -- release image
-
- -- scale into a separate image and move
-spriteTitle:setImage(imageSpriteTitle:scaledImage(1.6))
-spriteTitle:moveTo(200, 80)
-spriteButton:moveTo(200, 150)
+local textbox <const> = gfx.sprite.new()
+class("Textbox").extends(gfx.sprite)
 
 
+function Textbox:init()
 
--- game over messages
-local spriteLoser = gfx.sprite.spriteWithText("oh... bested by a stoat ...", 400, 240)
-local spriteRetry = gfx.sprite.spriteWithText("press A to try again!", 400, 240)
-local spriteFinalScore = nil
-spriteLoser:moveTo(200, 120)
-spriteRetry:moveTo(200, 160)
+    Textbox.super.init(self, textbox)
 
+    self:setSize(380, 80)
+    self:moveTo(200, 190)
+    self:setZIndex(900)
+    self.text = "hello"
+    self.currentChar = 1
+    self.currentText = ""
+    self.typing = true
 
--- display/hide functions
--- global though. don't do that later
-function showMenu()
-    -- add to screen
-    spriteTitle:add()
-    spriteButton:add()
 end
+
+
+function Textbox:update()
+    Textbox.super.update(self)
+
+    self:draw()
+end
+
+
+function Textbox:draw()
+
+    -- pushContext == draw only in this block
+    gfx.pushContext()
+
+        gfx.setColor(gfx.kColorWhite)
+        gfx.fillRect(0,0,380,80)
+
+        gfx.setLineWidth(4)
+        gfx.setColor(gfx.kColorBlack)
+        gfx.drawRect(0,0,380,80)
+
+        gfx.drawTextInRect(self.text, 10, 10, 200, 160)
+        print("yo")
+
+    gfx.popContext()
+    
+end
+
+
+
