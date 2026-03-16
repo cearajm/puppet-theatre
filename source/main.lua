@@ -45,8 +45,7 @@ comicData = myComicData
 
 local function init()
     -- print("hi")
-    -- Noble.new(LobbyScene)
-    -- local textbox = Textbox()
+    Noble.new(LobbyScene)
 
 
     -- local player = Player()
@@ -59,7 +58,7 @@ function pd.update()
     gfx.sprite.update()
     pd.timer.updateTimers()
 
-    textbox:addSprite()
+    -- textbox:addSprite()
 end
 
 

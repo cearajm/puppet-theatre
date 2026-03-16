@@ -11,7 +11,7 @@ SpriteImage = {
     enemy = "assets/images/capybara",
 
     concierge = "assets/images/stoat",
-    staff = "assets/images/rock"
+    staff = "assets/images/puppet_sprite"
 }
 
 Audio = {
