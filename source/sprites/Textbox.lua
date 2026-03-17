@@ -9,6 +9,7 @@ local sfx <const> = pd.sound.sampleplayer
 local textbox <const> = gfx.sprite.new()
 class("Textbox").extends(gfx.sprite)
 
+local currentLine = 1
 
 function Textbox:init()
 
@@ -17,23 +18,50 @@ function Textbox:init()
     self:setSize(380, 80)
     self:moveTo(200, 190)
     self:setZIndex(900)
-    self.text = "hello"
+    
+    -- index the table for each line of dialogue
     self.currentChar = 1
-    self.currentText = ""
-    self.typing = true
+    self.text = {
+        "well met",
+        "how are you",
+        "i fare thee well"
+    }
+    
+    self.player = Player.instance
+    self.isActive = false -- dialogue is running
 
 end
 
 
-function Textbox:update()
-    Textbox.super.update(self)
+-- << DIALOGUE >>
+function Textbox:startDialogue()
+    -- start dialogue and pause character movement
+    self:setVisible(true)
+    self.isActive = true
+    self.player:toggleMove()
+end
 
-    self:draw()
+function Textbox:endDialogue()
+    -- hide textbox
+    self:setVisible(false)
+    self.isActive = false
+end
+
+function Textbox:getNextLine()
+    -- get next dialogue line to display
+    if currentLine < #self.text then
+        currentLine += 1
+    else
+        -- end when dialog has finished
+        self:endDialogue()
+        self.player:toggleMove()
+        currentLine = 1
+    end
 end
 
 
+-- << TEXTBOX >>
 function Textbox:draw()
-
     -- pushContext == draw only in this block
     gfx.pushContext()
 
@@ -44,12 +72,22 @@ function Textbox:draw()
         gfx.setColor(gfx.kColorBlack)
         gfx.drawRect(0,0,380,80)
 
-        gfx.drawTextInRect(self.text, 10, 10, 200, 160)
-        print("yo")
+        gfx.drawTextInRect(self.text[currentLine], 10, 10, 200, 160)
 
     gfx.popContext()
     
 end
+
+
+
+function Textbox:update()
+    Textbox.super.update(self)
+
+    self:draw()
+end
+
+
+
 
 
 

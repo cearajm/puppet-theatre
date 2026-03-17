@@ -33,6 +33,8 @@ function Player:init()
     local playerImageTable = gfx.imagetable.new("assets/images/puppet-table-32-32")
     Player.super.init(self, playerImageTable)
 
+    Player.instance = self
+
     self:addState("idle", 1, 1)
     self:addState("run", 1, 3, {tickStep = 4})
     self:playAnimation()
@@ -45,10 +47,31 @@ function Player:init()
     self:setCollideRect(0, 0, 32, 32)
     -- self:setCollideRect(3, 3, 10, 13)
 
+    self.canMove = true
+
 end
 
-function Player:collisionResponse()
-    return gfx.sprite.kCollisionTypeFreeze
+function Player:toggleMove()
+    -- toggle to false if the player runs out of ammo
+    if self.canMove then
+        self.canMove = false
+    else
+        self.canMove = true
+    end
+end
+
+function Player:collisionResponse(other)
+    -- return gfx.sprite.kCollisionTypeFreeze
+    -- if getmetatable(other).class == Staff then
+    --     return gfx.sprite.kCollisionTypeFreeze
+    -- else
+    --     return gfx.sprite.kCollisionTypeOverlap
+    -- end
+    if getmetatable(other).class == InteractArea then
+        return gfx.sprite.kCollisionTypeOverlap
+    else
+        return gfx.sprite.kCollisionTypeFreeze
+    end
 end
 
 -- function Player:handleState()
@@ -72,21 +95,23 @@ function Player:update()
     -- self:handleState()
     self:handleMovementAndCollisions()
 
-    if pd.buttonIsPressed(pd.kButtonUp) then
-        self:moveBy(0, -velocity)
-    end
-    if pd.buttonIsPressed(pd.kButtonDown) then
-        self:moveBy(0, velocity)
-    end
-    if pd.buttonIsPressed(pd.kButtonLeft) then
-        self:moveBy(-velocity, 0)
-    end
-    if pd.buttonIsPressed(pd.kButtonRight) then
-        self:moveBy(velocity, 0)
-    end
-
-    if pd.buttonJustPressed(pd.kButtonB) then
-        sfx_shoot:play()
+    if self.canMove then
+        if pd.buttonIsPressed(pd.kButtonUp) then
+            self:moveBy(0, -velocity)
+        end
+        if pd.buttonIsPressed(pd.kButtonDown) then
+            self:moveBy(0, velocity)
+        end
+        if pd.buttonIsPressed(pd.kButtonLeft) then
+            self:moveBy(-velocity, 0)
+        end
+        if pd.buttonIsPressed(pd.kButtonRight) then
+            self:moveBy(velocity, 0)
+        end
+    
+        if pd.buttonJustPressed(pd.kButtonB) then
+            sfx_shoot:play()
+        end
     end
 
 end

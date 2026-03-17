@@ -39,7 +39,7 @@ local gfx <const> = pd.graphics
 
 -- local lobbyScene = Noble.new(LobbyScene)
 -- GameScene()
-local textbox = Textbox()
+-- local textbox = Textbox()
 
 comicData = myComicData
 

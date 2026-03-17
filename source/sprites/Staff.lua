@@ -8,10 +8,14 @@ local sfx <const> = pd.sound.sampleplayer
 
 class("Staff").extends(AnimatedSprite)
 
-local x = 200
-local y = 44
+local x = 300
+local y = 60
 
-local area <const> = gfx.sprite.new()
+local interactArea = nil
+-- local textbox = Textbox()
+local textbox = nil
+
+-- local area <const> = gfx.sprite.new()
 
 function Staff:init()
     -- Staff.super.init(self, imageStaff)
@@ -25,10 +29,20 @@ function Staff:init()
     self:addState("idle", 1, 1)
     self:playAnimation()
 
-    self:moveTo(x,y)
-    self:setZIndex(100)
+    self:setZIndex(90)
     self:setTag(2)
-    self:setCollideRect(0, 0, 32, 32)
+    self:setCollideRect(0,0,32,32)
+    self:moveTo(x,y)
+
+    interactArea = InteractArea(self)
+    interactArea:setArea()
+    -- interactArea:addSprite()
+    textbox = Textbox()
+    textbox:addSprite()
+    textbox:setVisible(false)
+
+
+
     -- self:setCollideRect(3,3,10,13)
 
     -- set interaction collision area, to talk to the character
@@ -42,9 +56,9 @@ function Staff:init()
 end
 
 
-function Staff:collisionResponse()
-    -- return gfx.sprite.kCollisionTypeFreeze
-    return gfx.sprite.kCollisionTypeOverlap
+function Staff:collisionResponse(other)
+    return gfx.sprite.kCollisionTypeFreeze
+    -- return gfx.sprite.kCollisionTypeOverlap
 end
 
 
@@ -52,5 +66,23 @@ function Staff:update()
     Staff.super.update(self)
 
     self:updateAnimation()
+
+    local isAButtonPressed = pd.buttonJustPressed(pd.kButtonA)
+
+    if interactArea.canInteract and isAButtonPressed then
+        if not textbox.isActive then
+            textbox:startDialogue()
+        else
+            textbox:getNextLine()
+        end
+    end
+
+    -- local _, _, collisions = self:checkCollisions(self.x, self.y)
+    -- for _, collision in pairs(collisions) do 
+    --     local other = collision.other
+    --     if getmetatable(other).class == Player then
+    --         print("collided")
+    --     end
+    -- end
 
 end
