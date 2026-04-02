@@ -44,7 +44,7 @@ function Player:init()
     self:moveTo(x, y)
     self:setZIndex(100)
     self:setTag(1)
-    self:setCollideRect(0, 48, 64, 16)
+    self:setCollideRect(0, 52, 64, 12)
     -- self:setCollideRect(3, 3, 10, 13)
 
     self.canMove = true
@@ -67,7 +67,7 @@ function Player:collisionResponse(other)
     -- else
     --     return gfx.sprite.kCollisionTypeOverlap
     -- end
-    if getmetatable(other).class == InteractArea then
+    if getmetatable(other).class == Concierge then
         return gfx.sprite.kCollisionTypeOverlap
     else
         return gfx.sprite.kCollisionTypeFreeze

@@ -10,6 +10,7 @@ local textbox <const> = gfx.sprite.new()
 class("Textbox").extends(gfx.sprite)
 
 local currentLine = 1
+local currentText = nil
 
 function Textbox:init()
 
@@ -21,14 +22,33 @@ function Textbox:init()
     
     -- index the table for each line of dialogue
     self.currentChar = 1
+    -- self.text = {
+    --     "well met",
+    --     "how are you",
+    --     "i fare thee well"
+    -- }
     self.text = {
-        "well met",
-        "how are you",
-        "i fare thee well"
+        "Puppet. Good evening to you.",
+        "It's been a slow week, so I intend to slack off today.",
+        "...",
+        "You keep up the good work though."
+
     }
+
+    self.text2 = {
+        "Huh? I can only see the top of your head, Puppet.",
+    }
+
+    self.text3 = {
+        "Let me know if something interesting happens."
+    }
+
+
     
     self.player = Player.instance
     self.isActive = false -- dialogue is running
+
+    currentText = self.text
 
 end
 
@@ -49,12 +69,17 @@ end
 
 function Textbox:getNextLine()
     -- get next dialogue line to display
-    if currentLine < #self.text then
+    if currentLine < #currentText then
         currentLine += 1
     else
         -- end when dialog has finished
         self:endDialogue()
         self.player:toggleMove()
+        if currentText == self.text then
+            currentText = self.text2
+        elseif currentText == self.text2 then
+            currentText = self.text3
+        end
         currentLine = 1
     end
 end
@@ -72,7 +97,8 @@ function Textbox:draw()
         gfx.setColor(gfx.kColorBlack)
         gfx.drawRect(0,0,380,80)
 
-        gfx.drawTextInRect(self.text[currentLine], 10, 10, 200, 160)
+        -- gfx.drawTextInRect(self.text[currentLine], 10, 10, 200, 160)
+        gfx.drawTextInRect(currentText[currentLine], 10, 10, 200, 160)
 
     gfx.popContext()
     
