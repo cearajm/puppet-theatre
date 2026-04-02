@@ -1,10 +1,14 @@
 local pd <const> = playdate
 local gfx <const> = pd.graphics
+local sfx <const> = pd.sound.sampleplayer
+
 
 
 local area <const> = gfx.sprite.new()
 class("Concierge").extends(gfx.sprite)
 
+
+local sfx_dialogue = sfx.new(Audio.concierge)
 
 function Concierge:init()
     Concierge.super.init(self, area)
@@ -45,6 +49,7 @@ function Concierge:update()
 
     if self.canInteract and isAButtonPressed then
         print("ok")
+        sfx_dialogue:play()
         if not self.textbox.isActive then
             self.textbox:startDialogue()
         else

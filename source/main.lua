@@ -29,6 +29,7 @@ import 'menu'
 
 local pd <const> = playdate
 local gfx <const> = pd.graphics
+local musicPlayer = pd.sound.fileplayer.new(Audio.music)
 
 -- local player = Player()
 -- local concierge = Concierge()
@@ -46,6 +47,8 @@ comicData = myComicData
 local function init()
     -- print("hi")
     Noble.new(LobbyScene)
+    musicPlayer:setVolume(0.6)
+    musicPlayer:play()
 
 
     -- local player = Player()

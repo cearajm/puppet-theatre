@@ -40,7 +40,7 @@ function Textbox:init()
     }
 
     self.text3 = {
-        "Let me know if something interesting happens."
+        "Do let me know if something interesting happens."
     }
 
 
@@ -98,7 +98,7 @@ function Textbox:draw()
         gfx.drawRect(0,0,380,80)
 
         -- gfx.drawTextInRect(self.text[currentLine], 10, 10, 200, 160)
-        gfx.drawTextInRect(currentText[currentLine], 10, 10, 200, 160)
+        gfx.drawTextInRect(currentText[currentLine], 16, 16, 300, 160)
 
     gfx.popContext()
     

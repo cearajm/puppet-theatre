@@ -15,5 +15,7 @@ SpriteImage = {
 }
 
 Audio = {
-    shoot = 'assets/audio/shoot'
+    shoot = 'assets/audio/shoot',
+    music = 'assets/audio/bossa_nova.mp3',
+    concierge = 'assets/audio/concierge.wav'
 }
