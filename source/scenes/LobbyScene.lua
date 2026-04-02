@@ -15,12 +15,13 @@ class("LobbyScene").extends(NobleScene)
 local scene = LobbyScene
 local player = Player()
 local concierge = Concierge()
+local bell = Bell()
 
 -- local staff = Staff(300, 60)
 scene.backgroundColor = Graphics.kColorWhite
 
 -- concierge interaction area
-local conciergeArea = gfx.sprite.new()
+local panelsArea = gfx.sprite.new()
 
 -- create game scene: display sprites
 function scene:init(__sceneProperties)
@@ -35,6 +36,7 @@ function scene:init(__sceneProperties)
 	-- conciergeArea:setCollideRect(0, 0, 100, 100)
 	-- conciergeArea:moveTo(200, 150)
 	self:addSprite(concierge)
+	self:addSprite(bell)
 
 
 
