@@ -30,7 +30,7 @@ function Player:init()
 
     -- NEW
     -- local playerImageTable = gfx.imagetable.new("assets/images/player-table-16-16")
-    local playerImageTable = gfx.imagetable.new("assets/images/puppet-table-32-32")
+    local playerImageTable = gfx.imagetable.new("assets/images/puppet-table-64-64")
     Player.super.init(self, playerImageTable)
 
     Player.instance = self
@@ -44,7 +44,7 @@ function Player:init()
     self:moveTo(x, y)
     self:setZIndex(100)
     self:setTag(1)
-    self:setCollideRect(0, 0, 32, 32)
+    self:setCollideRect(0, 48, 64, 16)
     -- self:setCollideRect(3, 3, 10, 13)
 
     self.canMove = true

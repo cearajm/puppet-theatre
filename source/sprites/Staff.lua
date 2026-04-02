@@ -8,16 +8,16 @@ local sfx <const> = pd.sound.sampleplayer
 
 class("Staff").extends(AnimatedSprite)
 
-local x = 300
-local y = 60
+-- local x = 300
+-- local y = 60
 
-local interactArea = nil
+-- local interactArea = nil
 -- local textbox = Textbox()
-local textbox = nil
+-- local textbox = nil
 
 -- local area <const> = gfx.sprite.new()
 
-function Staff:init()
+function Staff:init(x, y)
     -- Staff.super.init(self, imageStaff)
 
     -- self:setCollideRect(4, 4, 45, 50)
@@ -34,13 +34,12 @@ function Staff:init()
     self:setCollideRect(0,0,32,32)
     self:moveTo(x,y)
 
-    interactArea = InteractArea(self)
-    interactArea:setArea()
+    self.interactArea = InteractArea(self)
+    self.interactArea:setArea()
     -- interactArea:addSprite()
-    textbox = Textbox()
-    textbox:addSprite()
-    textbox:setVisible(false)
-
+    self.textbox = Textbox()
+    self.textbox:addSprite()
+    self.textbox:setVisible(false)
 
 
     -- self:setCollideRect(3,3,10,13)
@@ -69,11 +68,11 @@ function Staff:update()
 
     local isAButtonPressed = pd.buttonJustPressed(pd.kButtonA)
 
-    if interactArea.canInteract and isAButtonPressed then
-        if not textbox.isActive then
-            textbox:startDialogue()
+    if self.interactArea.canInteract and isAButtonPressed then
+        if not self.textbox.isActive then
+            self.textbox:startDialogue()
         else
-            textbox:getNextLine()
+            self.textbox:getNextLine()
         end
     end
 

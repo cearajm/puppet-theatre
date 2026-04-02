@@ -9,12 +9,12 @@ import "../assets"
 import "../sprites"
 
 LobbyScene = {}
-class("LobbyScene").extends(NobleScene)
+class("ConciergeScene").extends(NobleScene)
 
 
 local scene = LobbyScene
 local player = Player()
--- local staff = Staff(300, 60)
+local staff = Staff()
 scene.backgroundColor = Graphics.kColorWhite
 
 
@@ -27,9 +27,7 @@ function scene:init(__sceneProperties)
 	-- create map sprite, and add player sprite
 	GameScene()
 	self:addSprite(player)
-	-- local test = Concierge()
-	-- self:addSprite(staff)
-	-- self:addSprite(concierge)
+	self:addSprite(staff)
 
 end
 
