@@ -11,6 +11,7 @@ class("GameScene").extends()
 -- local textbox = Textbox()
 local concierge = Concierge()
 local bell = Bell()
+local elevators = Elevators()
 
 -- level name == name in ldtk
 function GameScene:init(player)
@@ -45,7 +46,11 @@ function GameScene:loadInteractions(level)
 
     if level == "LobbyScene" then
         concierge:addSprite()
+        bell:addSprite()
+    elseif level == "Elevators" then
+        elevators:addSprite()
     end
+
 end
 
 function GameScene:loadLevel(level_name)

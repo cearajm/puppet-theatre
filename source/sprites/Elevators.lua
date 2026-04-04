@@ -3,37 +3,40 @@ local gfx <const> = pd.graphics
 local sfx <const> = pd.sound.sampleplayer
 
 
-
 local area <const> = gfx.sprite.new()
-class("Concierge").extends(gfx.sprite)
+class("Elevators").extends(gfx.sprite)
 
 
-local sfx_dialogue = sfx.new(Audio.concierge)
+local sfx_elevators = sfx.new(Audio.concierge)
+-- local panels = myComicData
 
-function Concierge:init()
-    Concierge.super.init(self, area)
+function Elevators:init()
+    Elevators.super.init(self, area)
 
     self:setSize(8, 8)
     self:setCollideRect(0, 0, 8, 8)
     self:setCenter(0.5, 0.5)
-	self:moveTo(200, 124)
+	self:moveTo(200, 76)
+    self:setTag(1)
 
     self.canInteract = true
-
-    self.textbox = Textbox("concierge")
-    -- self.textbox:addSprite()
+    self.textbox = Textbox("elevators")
     self.textbox:setVisible(false)
+
+    -- self.textbox = Textbox()
+    -- self.textbox:addSprite()
+    -- self.textbox:setVisible(false)
 
 end
 
-function Concierge:collisionResponse(other)
+function Elevators:collisionResponse(other)
     
     return gfx.sprite.kCollisionTypeOverlap
 end
 
 
-function Concierge:update()
-    Concierge.super.update(self)
+function Elevators:update()
+    Elevators.super.update(self)
 
     local isAButtonPressed = pd.buttonJustPressed(pd.kButtonA)
 
@@ -49,7 +52,7 @@ function Concierge:update()
 
     if self.canInteract and isAButtonPressed then
         print("ok")
-        sfx_dialogue:play()
+        sfx_elevators:play()
         if not self.textbox.isActive then
             self.textbox:startDialogue()
         else

@@ -29,19 +29,12 @@ scene.backgroundColor = Graphics.kColorWhite
 function scene:init(__sceneProperties)
 	scene.super.init(self)
 
-	-- GameScene(player)
-	-- concierge:addSprite()
-
-	
-
-
 
 end
 
 
 function scene:enter()
 	scene.super.enter(self)
-	
 
 end
 

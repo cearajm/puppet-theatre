@@ -6,15 +6,20 @@ local sfx <const> = pd.sound.sampleplayer
 -- local imagePlayer <const> = gfx.image.new(SpriteImage.player)
 -- class("Player").extends(gfx.sprite)
 
-local textbox <const> = gfx.sprite.new()
 class("Textbox").extends(gfx.sprite)
 
-local currentLine = 1
+local textbox = nil
+local currentLine = nil
 local currentText = nil
 
-function Textbox:init()
+function Textbox:init(text)
 
     Textbox.super.init(self, textbox)
+
+    self.textbox = gfx.sprite.new()
+    self.currentLine = 1
+    self.currentText = nil
+
 
     self:setSize(380, 80)
     self:moveTo(200, 190)
@@ -43,18 +48,33 @@ function Textbox:init()
         "Do let me know if something interesting happens."
     }
 
+    self.elevatorText = {
+        "Still out of service..."
+    }
+
 
     
     self.player = Player.instance
     self.isActive = false -- dialogue is running
 
-    currentText = self.text
+    if text == "concierge" then
+        self.currentText = self.text
+    elseif text == "elevators" then
+        self.currentText = self.elevatorText
+    end
 
 end
 
+function Textbox:getSelectedText(text)
+    if text == "concierge" then
+        currentText = self.text
+    elseif text == "elevators" then
+        currentText = self.elevatorText
+    end
+end
 
 -- << DIALOGUE >>
-function Textbox:startDialogue()
+function Textbox:startDialogue(text)
     -- start dialogue and pause character movement
     self:addSprite()
     
@@ -72,18 +92,20 @@ end
 
 function Textbox:getNextLine()
     -- get next dialogue line to display
-    if currentLine < #currentText then
-        currentLine += 1
+    if self.currentLine < #self.currentText then
+        self.currentLine += 1
     else
         -- end when dialog has finished
         self:endDialogue()
         Player.instance:toggleMove()
-        if currentText == self.text then
-            currentText = self.text2
-        elseif currentText == self.text2 then
-            currentText = self.text3
+        if self.currentText == self.text then
+            self.currentText = self.text2
+        elseif self.currentText == self.text2 then
+            self.currentText = self.text3
+            
         end
-        currentLine = 1
+        
+        self.currentLine = 1
     end
 end
 
@@ -101,7 +123,7 @@ function Textbox:draw()
         gfx.drawRect(0,0,380,80)
 
         -- gfx.drawTextInRect(self.text[currentLine], 10, 10, 200, 160)
-        gfx.drawTextInRect(currentText[currentLine], 16, 16, 300, 160)
+        gfx.drawTextInRect(self.currentText[self.currentLine], 16, 16, 300, 160)
 
     gfx.popContext()
     

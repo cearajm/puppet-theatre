@@ -64,7 +64,7 @@ function Player:collisionResponse(other)
     -- else
     --     return gfx.sprite.kCollisionTypeOverlap
     -- end
-    if getmetatable(other).class == Concierge or getmetatable(other).class == Bell then
+    if getmetatable(other).class == Concierge or getmetatable(other).class == Bell or other:getTag() == 1 then
         return gfx.sprite.kCollisionTypeOverlap
     else
         return gfx.sprite.kCollisionTypeFreeze
