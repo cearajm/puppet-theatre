@@ -7,7 +7,8 @@ local area <const> = gfx.sprite.new()
 class("Bell").extends(gfx.sprite)
 
 
--- local sfx_bell = sfx.new(Audio.bell)
+-- local sfx_bell = sfx.new(Audio.bell2)
+local sfx_bell = sfx.new(Audio.bell)
 -- local panels = myComicData
 
 function Bell:init()
@@ -19,6 +20,7 @@ function Bell:init()
 	self:moveTo(300, 124)
 
     self.canInteract = true
+    self.ringCount = 0
 
     -- self.textbox = Textbox()
     -- self.textbox:addSprite()
@@ -48,10 +50,11 @@ function Bell:update()
     end
 
     if self.canInteract and isAButtonPressed then
-        print("ok")
-        -- sfx_bell:play()
-        Panels.Settings.snapToPanels = true
-        Panels.start(comicData)
+        sfx_bell:play()
+        self.ringCount += 1
+        print(self.ringCount)
+        -- Panels.Settings.snapToPanels = true
+        -- Panels.start(comicData)
         
     end
 end
