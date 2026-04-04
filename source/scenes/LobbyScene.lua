@@ -1,5 +1,7 @@
 local pd <const> = playdate
 local gfx <const> = pd.graphics
+local ldtk <const> = LDtk
+
 
 -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -- !!! Rename 'SceneTemplate' to your scene's name in these first three lines. !!!
@@ -13,8 +15,10 @@ class("LobbyScene").extends(NobleScene)
 
 
 local scene = LobbyScene
-local concierge = Concierge()
-local bell = Bell()
+-- local concierge = Concierge()
+-- local bell = Bell()
+player = Player()
+gameScene = GameScene(player)
 
 
 -- local staff = Staff(300, 60)
@@ -25,10 +29,9 @@ scene.backgroundColor = Graphics.kColorWhite
 function scene:init(__sceneProperties)
 	scene.super.init(self)
 
-	-- create map sprite, and add player sprite
-	GameScene()
-	self:addSprite(concierge)
-	self:addSprite(bell)
+	-- GameScene(player)
+	-- concierge:addSprite()
+
 	
 
 
@@ -52,10 +55,25 @@ end
 -- This runs once per frame.
 function scene:update()
 	scene.super.update(self)
+	-- print(gameScene.currentLevel)
+
+
 	
-	Graphics.drawTextAligned("hii", 200, 120, kTextAlignment.center)
+	-- move player to other side
+	local posx, posy = player:getPosition()
+    if posx <= 0 then
+        player:moveTo(400, player.y)
+        gameScene:moveToRoom("west")
+    elseif posx >= 400 then
+        player:moveTo(0, player.y)
+        gameScene:moveToRoom("east")
+    end
 
 end
+
+
+
+
 
 -- This runs once per frame, and is meant for drawing code.
 function scene:drawBackground()

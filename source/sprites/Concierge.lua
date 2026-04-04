@@ -21,7 +21,7 @@ function Concierge:init()
     self.canInteract = true
 
     self.textbox = Textbox()
-    self.textbox:addSprite()
+    -- self.textbox:addSprite()
     self.textbox:setVisible(false)
 
 end

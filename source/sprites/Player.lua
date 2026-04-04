@@ -111,13 +111,5 @@ function Player:update()
         end
     end
 
-    local posx, posy = self:getPosition()
 
-    if posx <= 0 then
-        self:moveTo(400, self.y)
-        self.gameManager:moveToRoom("west")
-    elseif posx >= 400 then
-        self:moveTo(0, self.y)
-        self.gameManager:moveToRoom("east")
-    end
 end

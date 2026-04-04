@@ -60,6 +60,7 @@ end
 
 function pd.update()
     -- print("hi it's puppet theatre")
+    LobbyScene.update()
     gfx.sprite.update()
     pd.timer.updateTimers()
 

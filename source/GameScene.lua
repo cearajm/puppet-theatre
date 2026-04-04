@@ -1,20 +1,29 @@
 local gfx <const> = playdate.graphics
 local ldtk <const> = LDtk
 
+import "assets"
+import "sprites"
+
 -- load data from ldtk file (does not yet show anything)
 ldtk.load("levels/world.ldtk", false)
 class("GameScene").extends()
 
-
-
+-- local textbox = Textbox()
+local concierge = Concierge()
+local bell = Bell()
 
 -- level name == name in ldtk
-function GameScene:init(level_name)
+function GameScene:init(player)
     GameScene.super.init(self)
 
-    -- start game in the lobby
     self:loadLevel("LobbyScene")
-    self.player = Player(self)
+    self.player = player
+    self.player:addSprite()
+    self.currentLevel = "LobbyScene"
+
+
+    concierge:addSprite()
+    bell:addSprite()
 
 end
 
@@ -24,18 +33,21 @@ function GameScene:moveToRoom(direction)
 
     local x, y
     self:loadLevel(level)
-    self.player:add()
-    if direction == "west" then
-        x, y = 400, self.player.y
-    elseif direction == "east" then
-        x, y = 0, self.player.y
-    end
-    self.player:moveTo(x,y)
+    self.player:addSprite()
+    self.currentLevel = level
+
+    self:loadInteractions(level)
 end
 
 
--- this creates the tilemap for the game scene.
--- call in a noble Scene, to instantiate
+function GameScene:loadInteractions(level)
+    print(level)
+
+    if level == "LobbyScene" then
+        concierge:addSprite()
+    end
+end
+
 function GameScene:loadLevel(level_name)
     gfx.sprite.removeAll()
 
@@ -53,6 +65,7 @@ function GameScene:loadLevel(level_name)
             layerSprite:setCenter(0,0)
             layerSprite:moveTo(0,0)
             layerSprite:setZIndex(layer.zIndex)
+            print(layerSprite:getZIndex())
             layerSprite:add()
 
             -- create collision boxes
@@ -63,6 +76,11 @@ function GameScene:loadLevel(level_name)
             end
         end
     end
+end
+
+function GameScene:update()
+    GameScene.super.update(self)
+    -- concierge.textbox:draw()
 end
 
 

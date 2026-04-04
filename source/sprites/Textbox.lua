@@ -56,15 +56,18 @@ end
 -- << DIALOGUE >>
 function Textbox:startDialogue()
     -- start dialogue and pause character movement
+    self:addSprite()
+    
     self:setVisible(true)
     self.isActive = true
-    self.player:toggleMove()
+    Player.instance:toggleMove()
 end
 
 function Textbox:endDialogue()
     -- hide textbox
     self:setVisible(false)
     self.isActive = false
+    self:remove()
 end
 
 function Textbox:getNextLine()
@@ -74,7 +77,7 @@ function Textbox:getNextLine()
     else
         -- end when dialog has finished
         self:endDialogue()
-        self.player:toggleMove()
+        Player.instance:toggleMove()
         if currentText == self.text then
             currentText = self.text2
         elseif currentText == self.text2 then

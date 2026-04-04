@@ -50,7 +50,7 @@ function Bell:update()
     if self.canInteract and isAButtonPressed then
         print("ok")
         -- sfx_bell:play()
-        -- Panels.Settings.snapToPanels = true
+        Panels.Settings.snapToPanels = true
         Panels.start(comicData)
         
     end
