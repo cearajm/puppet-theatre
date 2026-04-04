@@ -13,40 +13,29 @@ class("LobbyScene").extends(NobleScene)
 
 
 local scene = LobbyScene
-local player = Player()
 local concierge = Concierge()
 local bell = Bell()
+
 
 -- local staff = Staff(300, 60)
 scene.backgroundColor = Graphics.kColorWhite
 
--- concierge interaction area
-local panelsArea = gfx.sprite.new()
 
 -- create game scene: display sprites
 function scene:init(__sceneProperties)
 	scene.super.init(self)
-	-- self.backgroundColor = Graphics.kColorWhite
 
 	-- create map sprite, and add player sprite
 	GameScene()
-	self:addSprite(player)
-
-	-- set interaction
-	-- conciergeArea:setCollideRect(0, 0, 100, 100)
-	-- conciergeArea:moveTo(200, 150)
 	self:addSprite(concierge)
 	self:addSprite(bell)
-
+	
 
 
 
 end
 
--- When transitioning from another scene, this runs as soon as this
--- scene needs to be visible (this moment depends on which transition type is used).
--- This is also the point where this scene becomes the 'currentScene' according to
--- Noble Engine, and its update loop will begin executing on every frame.
+
 function scene:enter()
 	scene.super.enter(self)
 	
@@ -54,11 +43,10 @@ function scene:enter()
 end
 
 -- This runs once a transition from another scene is complete.
--- This scene's input handler will be enabled at this point and
--- The player will be able to interact with the scene.
 -- Use this method to begin this scene's game logic.
 function scene:start()
 	scene.super.start(self)
+
 end
 
 -- This runs once per frame.
@@ -66,12 +54,6 @@ function scene:update()
 	scene.super.update(self)
 	
 	Graphics.drawTextAligned("hii", 200, 120, kTextAlignment.center)
-
-	-- if pd.buttonIsPressed(pd.kButtonA) then
-        
-	-- 	print("asdfasdf")
-    -- end
-	
 
 end
 
@@ -126,7 +108,8 @@ scene.inputHandler = {
 	-- B button
 	--
 	BButtonDown = function()
-		-- Your code here
+		-- lobby:remove()
+		-- elevators:show()
 	end,
 	BButtonHeld = function()
 		-- Your code here

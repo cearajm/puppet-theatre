@@ -47,6 +47,8 @@ comicData = myComicData
 local function init()
     -- print("hi")
     Noble.new(LobbyScene)
+
+    LobbyScene:start()
     musicPlayer:setVolume(0.6)
     musicPlayer:play()
 

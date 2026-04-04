@@ -19,17 +19,9 @@ local y = 100
 local sfx_shoot = sfx.new(Audio.shoot)
 
 
-function Player:init()
-    -- Player.super.init(self, imagePlayer)
+function Player:init(gameManager)
 
-    -- self:setScale(2)
-    -- self:setCollideRect(4, 4, 45, 50)
-    -- self:moveTo(startX, startY)
 
-    -- print(startX)
-
-    -- NEW
-    -- local playerImageTable = gfx.imagetable.new("assets/images/player-table-16-16")
     local playerImageTable = gfx.imagetable.new("assets/images/puppet-table-64-64")
     Player.super.init(self, playerImageTable)
 
@@ -48,6 +40,7 @@ function Player:init()
     -- self:setCollideRect(3, 3, 10, 13)
 
     self.canMove = true
+    self.gameManager = gameManager
 
 end
 
@@ -58,6 +51,10 @@ function Player:toggleMove()
     else
         self.canMove = true
     end
+end
+
+function Player:mirror()
+    self:moveTo(400, self.y)
 end
 
 function Player:collisionResponse(other)
@@ -114,4 +111,13 @@ function Player:update()
         end
     end
 
+    local posx, posy = self:getPosition()
+
+    if posx <= 0 then
+        self:moveTo(400, self.y)
+        self.gameManager:moveToRoom("west")
+    elseif posx >= 400 then
+        self:moveTo(0, self.y)
+        self.gameManager:moveToRoom("east")
+    end
 end
