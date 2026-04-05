@@ -12,19 +12,22 @@ class("GameScene").extends()
 local concierge = Concierge()
 local bell = Bell()
 local elevators = Elevators()
+local elevatorRide = ElevatorRide()
 
 -- level name == name in ldtk
 function GameScene:init(player)
     GameScene.super.init(self)
 
-    self:loadLevel("Elevators")
-    self:loadInteractions("Elevators")
+    -- self.currentLevel = "LobbyScene"
+    self.currentLevel = "Elevators"
+    -- self:loadLevel("Elevators")
     self.player = player
     self.player:addSprite()
-    self.currentLevel = "LobbyScene"
-    self.currentLevel = "Elevators"
+    GameScene.instance = self
 
 end
+
+
 
 
 function GameScene:moveToRoom(direction)
@@ -32,10 +35,8 @@ function GameScene:moveToRoom(direction)
 
     local x, y
     self:loadLevel(level)
-    self.player:addSprite()
-    self.currentLevel = level
 
-    self:loadInteractions(level)
+
 end
 
 
@@ -43,17 +44,30 @@ function GameScene:loadInteractions(level)
     print(level)
 
     if level == "LobbyScene" then
+        self.player:addSprite()
         concierge:addSprite()
         bell:addSprite()
     elseif level == "Elevators" then
+        self.player:addSprite()
         elevators:addSprite()
         elevators.elevator1:addSprite()
+    elseif level == "ElevatorRide" then
+        print("here")
+        elevatorRide.textbox:addSprite()
+        elevatorRide.isInElevator = true
+    elseif level == "Window" then
+        self.player:addSprite()
     end
 
 end
 
 function GameScene:loadLevel(level_name)
     gfx.sprite.removeAll()
+    self.currentLevel = level_name
+    -- LobbyScene.currentLevel = self.currentLevel
+    -- print("lobby: ", LobbyScene.currentLevel)
+    self:loadInteractions(level_name)
+
 
     -- get all layers for the level and create tilemap
     self.levelName = level_name
@@ -83,8 +97,14 @@ function GameScene:loadLevel(level_name)
 end
 
 function GameScene:update()
-    GameScene.super.update(self)
+    -- GameScene.super.update(self)
+    elevatorRide:update()
+
     -- concierge.textbox:draw()
+    -- print(self.currentLevel)
+    
+    if self.currentLevel == "ElevatorRide" then
+    end
 end
 
 

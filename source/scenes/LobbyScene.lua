@@ -9,26 +9,34 @@ local ldtk <const> = LDtk
 
 import "../assets"
 import "../sprites"
+import "ElevatorRide"
 
 LobbyScene = {}
 class("LobbyScene").extends(NobleScene)
 
 
 local scene = LobbyScene
+local isInElevator = false
 -- local concierge = Concierge()
 -- local bell = Bell()
 player = Player()
 gameScene = GameScene(player)
+local currentLevel = "Elevators"
+
 
 
 -- local staff = Staff(300, 60)
 scene.backgroundColor = Graphics.kColorWhite
 
-
+function scene:setValues()
+	self.currentLevel = "Elevators"
+end
 -- create game scene: display sprites
 function scene:init(__sceneProperties)
 	scene.super.init(self)
 
+	gameScene:loadLevel("Elevators")
+	player:addSprite()
 
 end
 
@@ -48,21 +56,28 @@ end
 -- This runs once per frame.
 function scene:update()
 	scene.super.update(self)
-	-- print(gameScene.currentLevel)
+	gameScene:update()
+	currentLevel = gameScene.currentLevel
+	-- print("from main: ", currentLevel)
+		
 
 
 	
-	-- move player to other side
+	-- move to new room and teleport player to the opposite
 	local posx, posy = player:getPosition()
     if posx <= 0 then
         player:moveTo(400, player.y)
-        gameScene:moveToRoom("west")
+        GameScene.instance:moveToRoom("west")
     elseif posx >= 400 then
         player:moveTo(0, player.y)
-        gameScene:moveToRoom("east")
+        GameScene.instance:moveToRoom("east")
     end
 
+
 end
+
+
+
 
 
 

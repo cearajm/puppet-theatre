@@ -17,6 +17,7 @@ import 'libraries/noble/utilities/Utilities'
 -- game
 import 'GameScene'
 import 'scenes/LobbyScene'
+import 'ElevatorRide'
 
 -- comic
 import 'myComicData.lua'

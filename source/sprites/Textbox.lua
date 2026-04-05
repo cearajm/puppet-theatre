@@ -50,6 +50,7 @@ function Textbox:init(text)
     self.currentText = text
     self.currentBlock = 1
     self.currentLine = 1
+    self.isEnded = false
 
 end
 

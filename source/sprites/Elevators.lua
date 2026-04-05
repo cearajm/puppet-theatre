@@ -1,13 +1,16 @@
 local pd <const> = playdate
 local gfx <const> = pd.graphics
 local sfx <const> = pd.sound.sampleplayer
-
+import "assets"
+import "ElevatorRide"
 
 local area <const> = gfx.sprite.new()
 class("Elevators").extends(gfx.sprite)
 
 
 local sfx_elevators = sfx.new(Audio.concierge)
+-- elevatorRide = ElevatorRide()
+
 
 
 function Elevators:init()
@@ -25,6 +28,7 @@ function Elevators:init()
     self.elevator1:setCenter(0.5, 0.5)
 	self.elevator1:moveTo(172, 80)
     self.elevator1:setTag(1)
+    self.gameScene = GameScene.instance
 
 
     -- set text for each interaction
@@ -83,18 +87,21 @@ function Elevators:update()
             self.rightTextbox:startDialogue()
         else
             self.rightTextbox:getNextLine()
+
         end
     end
 
     -- start dialogue for left side elevator
     if self.canInteractLeft and isAButtonPressed then
         sfx_elevators:play()
-        if not self.leftTextbox.isActive then
-            self.leftTextbox:startDialogue()
-        else
-            self.leftTextbox:getNextLine()
-        end
+        -- if not self.leftTextbox.isActive then
+        --     self.leftTextbox:startDialogue()
+        -- else
+        --     self.leftTextbox:getNextLine()
+        -- end
+        print("asdfasdf")
+        GameScene.instance:moveToRoom("north")
     end
 
-
 end
+
