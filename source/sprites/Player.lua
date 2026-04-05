@@ -36,7 +36,7 @@ function Player:init(gameManager)
     self:moveTo(x, y)
     self:setZIndex(100)
     self:setTag(1)
-    self:setCollideRect(0, 52, 64, 12)
+    self:setCollideRect(14, 54, 36, 12)
     -- self:setCollideRect(3, 3, 10, 13)
 
     self.canMove = true

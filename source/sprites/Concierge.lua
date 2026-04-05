@@ -20,14 +20,23 @@ function Concierge:init()
 
     self.canInteract = true
 
-    self.textbox = Textbox("concierge")
-    -- self.textbox:addSprite()
-    self.textbox:setVisible(false)
+    -- set concierge dialogue
+    local text = {
+        {"Puppet. Good evening to you.",
+        "It's been a slow week, so I intend to slack off today.",
+        "...",
+        "You keep up the good work though."},
+        {"Huh? I can only see the top of your head, Puppet."},
+        {"Do let me know if something interesting happens."}
+    }
 
+    self.textbox = Textbox(text)
+    self.textbox:setVisible(false)
+    
 end
 
+
 function Concierge:collisionResponse(other)
-    
     return gfx.sprite.kCollisionTypeOverlap
 end
 

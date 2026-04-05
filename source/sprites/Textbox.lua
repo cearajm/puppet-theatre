@@ -12,43 +12,26 @@ local textbox = nil
 local currentLine = nil
 local currentText = nil
 
+local currentBlock = 1
+
 function Textbox:init(text)
 
     Textbox.super.init(self, textbox)
 
     self.textbox = gfx.sprite.new()
-    self.currentLine = 1
-    self.currentText = nil
 
 
     self:setSize(380, 80)
     self:moveTo(200, 190)
     self:setZIndex(900)
     
-    -- index the table for each line of dialogue
-    self.currentChar = 1
-    -- self.text = {
-    --     "well met",
-    --     "how are you",
-    --     "i fare thee well"
-    -- }
-    self.text = {
-        "Puppet. Good evening to you.",
-        "It's been a slow week, so I intend to slack off today.",
-        "...",
-        "You keep up the good work though."
 
+
+
+    self.elevatorText1 = {
+        "What floor?"
     }
-
-    self.text2 = {
-        "Huh? I can only see the top of your head, Puppet.",
-    }
-
-    self.text3 = {
-        "Do let me know if something interesting happens."
-    }
-
-    self.elevatorText = {
+    self.elevatorText2 = {
         "Still out of service..."
     }
 
@@ -57,19 +40,27 @@ function Textbox:init(text)
     self.player = Player.instance
     self.isActive = false -- dialogue is running
 
-    if text == "concierge" then
-        self.currentText = self.text
-    elseif text == "elevators" then
-        self.currentText = self.elevatorText
-    end
+    -- if text == "concierge" then
+    --     self.currentText = self.text
+    -- elseif text == "elevator1" then
+    --     self.currentText = self.elevatorText2
+    -- -- elseif text == "elevator2" then
+    -- --     self.currentText = self.elevatorText2
+    -- end
+    self.currentText = text
+    self.currentBlock = 1
+    self.currentLine = 1
 
+end
+
+function Textbox:setText(text)
 end
 
 function Textbox:getSelectedText(text)
     if text == "concierge" then
         currentText = self.text
-    elseif text == "elevators" then
-        currentText = self.elevatorText
+    elseif text == "elevator2" then
+        currentText = self.elevatorText2
     end
 end
 
@@ -77,7 +68,6 @@ end
 function Textbox:startDialogue(text)
     -- start dialogue and pause character movement
     self:addSprite()
-    
     self:setVisible(true)
     self.isActive = true
     Player.instance:toggleMove()
@@ -88,25 +78,35 @@ function Textbox:endDialogue()
     self:setVisible(false)
     self.isActive = false
     self:remove()
+
+    -- advance dialogue on each interaction until the last line, then repeat that last line only
+    if self.currentBlock < #self.currentText then
+        self.currentBlock += 1
+    end
+    self.currentLine = 1
 end
 
 function Textbox:getNextLine()
+    print(self.currentBlock, #self.currentText)
+
     -- get next dialogue line to display
-    if self.currentLine < #self.currentText then
+    if self.currentLine < #self.currentText[self.currentBlock] then
         self.currentLine += 1
     else
         -- end when dialog has finished
         self:endDialogue()
         Player.instance:toggleMove()
-        if self.currentText == self.text then
-            self.currentText = self.text2
-        elseif self.currentText == self.text2 then
-            self.currentText = self.text3
+        -- if self.currentText == self.text then
+        --     self.currentText = self.text2
+        -- elseif self.currentText == self.text2 then
+        --     self.currentText = self.text3
             
-        end
+        -- end
         
-        self.currentLine = 1
+        -- self.currentLine = 1
     end
+
+
 end
 
 
@@ -123,7 +123,7 @@ function Textbox:draw()
         gfx.drawRect(0,0,380,80)
 
         -- gfx.drawTextInRect(self.text[currentLine], 10, 10, 200, 160)
-        gfx.drawTextInRect(self.currentText[self.currentLine], 16, 16, 300, 160)
+        gfx.drawTextInRect(self.currentText[self.currentBlock][self.currentLine], 16, 16, 300, 160)
 
     gfx.popContext()
     
@@ -134,6 +134,9 @@ end
 function Textbox:update()
     Textbox.super.update(self)
 
+    if isAButtonPressed then
+        print(self.currentText)
+    end
     self:draw()
 end
 

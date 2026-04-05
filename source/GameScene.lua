@@ -17,20 +17,18 @@ local elevators = Elevators()
 function GameScene:init(player)
     GameScene.super.init(self)
 
-    self:loadLevel("LobbyScene")
+    self:loadLevel("Elevators")
+    self:loadInteractions("Elevators")
     self.player = player
     self.player:addSprite()
     self.currentLevel = "LobbyScene"
-
-
-    concierge:addSprite()
-    bell:addSprite()
+    self.currentLevel = "Elevators"
 
 end
 
 
 function GameScene:moveToRoom(direction)
-    local level = ldtk.get_neighbours(self.levelName, direction)[1] -- one neighbor per direction
+    local level = ldtk.get_neighbours(self.levelName, direction)[1]-- one neighbor per direction
 
     local x, y
     self:loadLevel(level)
@@ -49,6 +47,7 @@ function GameScene:loadInteractions(level)
         bell:addSprite()
     elseif level == "Elevators" then
         elevators:addSprite()
+        elevators.elevator1:addSprite()
     end
 
 end
