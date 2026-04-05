@@ -29,14 +29,16 @@ local currentLevel = "Elevators"
 scene.backgroundColor = Graphics.kColorWhite
 
 function scene:setValues()
-	self.currentLevel = "Elevators"
+	self.currentLevel = nil
 end
 -- create game scene: display sprites
 function scene:init(__sceneProperties)
 	scene.super.init(self)
 
-	gameScene:loadLevel("Elevators")
-	player:addSprite()
+	-- gameScene:loadLevel("LobbyScene")
+	gameScene:loadLevel("Window")
+	-- player:addSprite()
+	player:moveTo(200, 160)
 
 end
 
@@ -66,10 +68,10 @@ function scene:update()
 	-- move to new room and teleport player to the opposite
 	local posx, posy = player:getPosition()
     if posx <= 0 then
-        player:moveTo(400, player.y)
+        player:moveWithCollisions(400, player.y)
         GameScene.instance:moveToRoom("west")
     elseif posx >= 400 then
-        player:moveTo(0, player.y)
+        player:moveWithCollisions(0, player.y)
         GameScene.instance:moveToRoom("east")
     end
 

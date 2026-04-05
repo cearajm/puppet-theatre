@@ -39,7 +39,7 @@ function ElevatorRide:update()
         print("oiu")
     end
     if self.isInElevator and isBButtonPressed then
-        GameScene.instance:moveToRoom("south")
+        GameScene.instance:moveToRoom("east")
         self.isInElevator = false
         Player.instance:moveTo(104, 42)
         Player.instance.canMove = true

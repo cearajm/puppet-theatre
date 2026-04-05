@@ -1,3 +1,4 @@
+local pd <const> = playdate
 local gfx <const> = playdate.graphics
 local ldtk <const> = LDtk
 
@@ -19,7 +20,7 @@ function GameScene:init(player)
     GameScene.super.init(self)
 
     -- self.currentLevel = "LobbyScene"
-    self.currentLevel = "Elevators"
+    self.currentLevel = nil
     -- self:loadLevel("Elevators")
     self.player = player
     self.player:addSprite()
@@ -57,6 +58,8 @@ function GameScene:loadInteractions(level)
         elevatorRide.isInElevator = true
     elseif level == "Window" then
         self.player:addSprite()
+    elseif level == "Lounge" then
+        self.player:addSprite()
     end
 
 end
@@ -67,6 +70,8 @@ function GameScene:loadLevel(level_name)
     -- LobbyScene.currentLevel = self.currentLevel
     -- print("lobby: ", LobbyScene.currentLevel)
     self:loadInteractions(level_name)
+    -- local y = level_name.worldY
+    -- print(y)
 
 
     -- get all layers for the level and create tilemap
@@ -78,10 +83,10 @@ function GameScene:loadLevel(level_name)
             -- create sprite for each layer and set a tilemap on the sprite
             -- sprite == world sprite
             local layerSprite = gfx.sprite.new()
-            layerSprite:setSize(400, 240)
+            -- layerSprite:setSize(600, 436)
             layerSprite:setTilemap(self.tilemap)
-            layerSprite:setCenter(0,0)
-            layerSprite:moveTo(0,0)
+            layerSprite:setCenter(0, 0)
+            layerSprite:moveTo(0, 0)
             layerSprite:setZIndex(layer.zIndex)
             print(layerSprite:getZIndex())
             layerSprite:add()
@@ -90,10 +95,18 @@ function GameScene:loadLevel(level_name)
             -- get empty tiles: empty != "Solid"
             self.emptyTiles = ldtk.get_empty_tileIDs(level_name, "Solid", layer_name)
             if self.emptyTiles then
+                gfx.setDrawOffset(0,0)
                 gfx.sprite.addWallSprites(self.tilemap, self.emptyTiles)
+                -- self.tilemap.addWallSprites(self.tilemap, self.emptyTiles)
             end
+            -- if level_name ~= "Lounge" then
+            --     layerSprite:setIgnoresDrawOffset(true)
+            -- end
         end
+
     end
+   
+
 end
 
 function GameScene:update()
@@ -102,9 +115,28 @@ function GameScene:update()
 
     -- concierge.textbox:draw()
     -- print(self.currentLevel)
+
+    print(self.currentLevel)
     
-    if self.currentLevel == "ElevatorRide" then
+    if self.currentLevel == "Lounge" then
+        local x, y = self.player:getPosition()
+        local camx = 50 - x
+        local camy = 50 - y
+        gfx.setDrawOffset(0, -y)
+        self.tilemap:draw(0, 0)
+       
+    
     end
+
+    -- gfx.setDrawOffset(0,0)
+
+        
+    --     -- gfx.sprite.addWallSprites(self.tilemap, self.emptyTiles)
+    --     -- self.emptyTiles:draw(0, 104)
+    -- end
+
+    -- gfx.setDrawOffset(0, 0)
+    -- gfx.clear()
 end
 
 

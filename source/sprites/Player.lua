@@ -36,10 +36,12 @@ function Player:init(gameManager)
     self:moveTo(x, y)
     self:setZIndex(100)
     self:setTag(1)
-    self:setCollideRect(14, 54, 36, 12)
+    self:setCollideRect(14, 54, 36, 10)
     -- self:setCollideRect(3, 3, 10, 13)
 
+    self.velocity = velocity
     self.canMove = true
+    self:setIgnoresDrawOffset(true)
     self.gameManager = gameManager
 
 end
@@ -64,6 +66,7 @@ function Player:collisionResponse(other)
     -- else
     --     return gfx.sprite.kCollisionTypeOverlap
     -- end
+    -- if getmetatable(other).class == Concierge or getmetatable(other).class == Bell or other:getTag() == 1 then
     if getmetatable(other).class == Concierge or getmetatable(other).class == Bell or other:getTag() == 1 then
         return gfx.sprite.kCollisionTypeOverlap
     else
@@ -94,16 +97,16 @@ function Player:update()
 
     if self.canMove then
         if pd.buttonIsPressed(pd.kButtonUp) then
-            self:moveBy(0, -velocity)
+            self:moveBy(0, -self.velocity)
         end
         if pd.buttonIsPressed(pd.kButtonDown) then
-            self:moveBy(0, velocity)
+            self:moveBy(0, self.velocity)
         end
         if pd.buttonIsPressed(pd.kButtonLeft) then
-            self:moveBy(-velocity, 0)
+            self:moveBy(-self.velocity, 0)
         end
         if pd.buttonIsPressed(pd.kButtonRight) then
-            self:moveBy(velocity, 0)
+            self:moveBy(self.velocity, 0)
         end
     
         if pd.buttonJustPressed(pd.kButtonB) then
