@@ -43,9 +43,26 @@ local musicPlayer = pd.sound.fileplayer.new(Audio.music)
 -- GameScene()
 -- local textbox = Textbox()
 
+local cutsceneIsPlaying = false
 comicData = myComicData
 
+
+function cutsceneDidFinish()
+    cutsceneIsPlaying = false
+    print("nope")
+    -- LobbyScene.resume()
+end
+
+function startCutScene()
+    cutsceneIsPlaying = true
+    -- LobbyScene:pause()
+    print("yup")
+    Panels.startCutscene(comicData, cutsceneDidFinish())
+end
+
 local function init()
+
+    showMenu()
     -- print("hi")
     Noble.new(LobbyScene)
 
@@ -53,19 +70,21 @@ local function init()
     musicPlayer:setVolume(0.6)
     musicPlayer:play()
 
-
-    -- local player = Player()
-    -- noblescene:addSprite(player)
-
 end
+
 
 function pd.update()
     -- print("hi it's puppet theatre")
-    LobbyScene.update()
+    if cutsceneIsPlaying then
+        Panels.update()
+        pd.timer.updateTimers()
+    else
+        LobbyScene.update()
+    end
     gfx.sprite.update()
-    pd.timer.updateTimers()
 
-    -- textbox:addSprite()
+    -- print(cutsceneIsPlaying)
+
 end
 
 

@@ -37,7 +37,7 @@ function Elevators:init()
         {"Guests only."}
     }
     local rightElevatorText = {
-        {"Still out of service..."},
+        {"This one is still out of service..."},
     }
 
     self.leftTextbox = Textbox(leftElevatorText)

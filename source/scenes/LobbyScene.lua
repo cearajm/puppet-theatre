@@ -36,7 +36,7 @@ function scene:init(__sceneProperties)
 	scene.super.init(self)
 
 	-- gameScene:loadLevel("LobbyScene")
-	gameScene:loadLevel("Window")
+	gameScene:loadLevel("LobbyScene")
 	-- player:addSprite()
 	player:moveTo(200, 160)
 
@@ -205,13 +205,13 @@ scene.inputHandler = {
 
 	-- Crank
 	--
-	cranked = function(change, acceleratedChange)	-- Runs when the crank is rotated. See Playdate SDK documentation for details.
-		-- Your code here
-	end,
-	crankDocked = function()						-- Runs once when when crank is docked.
-		-- Your code here
-	end,
-	crankUndocked = function()						-- Runs once when when crank is undocked.
-		-- Your code here
-	end
+	-- cranked = function(change, acceleratedChange)	-- Runs when the crank is rotated. See Playdate SDK documentation for details.
+	-- 	-- Your code here
+	-- end,
+	-- crankDocked = function()						-- Runs once when when crank is docked.
+	-- 	-- Your code here
+	-- end,
+	-- crankUndocked = function()						-- Runs once when when crank is undocked.
+	-- 	-- Your code here
+	-- end
 }

@@ -8,16 +8,16 @@ local sfx <const> = pd.sound.sampleplayer
 
 class("Staff").extends(AnimatedSprite)
 
--- local x = 300
--- local y = 60
+local x = 332
+local y = 60
 
 -- local interactArea = nil
 -- local textbox = Textbox()
 -- local textbox = nil
 
--- local area <const> = gfx.sprite.new()
+local area <const> = gfx.sprite.new()
 
-function Staff:init(x, y)
+function Staff:init()
     -- Staff.super.init(self, imageStaff)
 
     -- self:setCollideRect(4, 4, 45, 50)
@@ -31,7 +31,7 @@ function Staff:init(x, y)
 
     self:setZIndex(90)
     self:setTag(2)
-    self:setCollideRect(0,0,32,32)
+    self:setCollideRect(0,0,64,64)
     self:moveTo(x,y)
 
     self.interactArea = InteractArea(self)
@@ -42,15 +42,15 @@ function Staff:init(x, y)
     self.textbox:setVisible(false)
 
 
-    -- self:setCollideRect(3,3,10,13)
+    self:setCollideRect(3,3,10,13)
 
     -- set interaction collision area, to talk to the character
-    -- area:setSize(0,0,32,32)
-    -- area:setCollideRect(0,0,32,32)
-    -- area:moveTo(x, y + 16)
-    -- area:setZIndex(100)
-    -- area.collisionResponse = kCollisionTypeOverlap
-    -- area:addSprite()
+    area:setSize(0,0,32,32)
+    area:setCollideRect(0,0,32,32)
+    area:moveTo(x, y + 16)
+    area:setZIndex(100)
+    area.collisionResponse = kCollisionTypeOverlap
+    area:addSprite()
 
 end
 

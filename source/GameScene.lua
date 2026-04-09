@@ -14,6 +14,10 @@ local concierge = Concierge()
 local bell = Bell()
 local elevators = Elevators()
 local elevatorRide = ElevatorRide()
+local guy = Guy("1")
+local guy2 = Guy("2")
+local staff = Staff()
+local window = Window()
 
 -- level name == name in ldtk
 function GameScene:init(player)
@@ -58,8 +62,12 @@ function GameScene:loadInteractions(level)
         elevatorRide.isInElevator = true
     elseif level == "Window" then
         self.player:addSprite()
+        window:addSprite()
+        guy:addSprite()
     elseif level == "Lounge" then
         self.player:addSprite()
+        staff:addSprite()
+        guy2:addSprite()
     elseif level == "Lounge3" then
         self.player:addSprite()
     end
@@ -114,11 +122,12 @@ end
 function GameScene:update()
     -- GameScene.super.update(self)
     elevatorRide:update()
+    window:update()
 
     -- concierge.textbox:draw()
     -- print(self.currentLevel)
 
-    print(self.currentLevel)
+    -- print(self.currentLevel)
     
     if self.currentLevel == "Lounge" then
         local x, y = self.player:getPosition()

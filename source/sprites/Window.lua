@@ -3,48 +3,44 @@ local gfx <const> = pd.graphics
 local sfx <const> = pd.sound.sampleplayer
 
 
-
 local area <const> = gfx.sprite.new()
-class("Concierge").extends(gfx.sprite)
+class("Window").extends(gfx.sprite)
 
 
-local sfx_dialogue = sfx.new(Audio.concierge)
+-- local panels = myComicData
 
-function Concierge:init()
-    Concierge.super.init(self, area)
+function Window:init()
+    Window.super.init(self, area)
 
     self:setSize(8, 8)
-    self:setCollideRect(0, 0, 8, 8)
+    self:setCollideRect(0, 0, 200, 12)
     self:setCenter(0.5, 0.5)
-	self:moveTo(200, 124)
+	self:moveTo(42, 76)
 
-    self.canInteract = true
+    self.canInteract = false
+    self.ringCount = 0
+    self:setTag(1)
 
-    -- set concierge dialogue
+
     local text = {
-        {"Puppet. Good evening to you.",
-        "It's been a slow week, so I intend to slack off today.",
-        "...",
-        "... ...",
-        "... ... ...",
-        "You keep up the good work though."},
-        {"Huh? I can only see the top of your head, Puppet."},
-        {"Do let me know if something interesting happens."}
+        -- {"hi puppy :)"},
+        {"The fog is dense."}
     }
 
     self.textbox = Textbox(text)
     self.textbox:setVisible(false)
-    
+
 end
 
-
-function Concierge:collisionResponse(other)
+function Window:collisionResponse(other)
+    
     return gfx.sprite.kCollisionTypeOverlap
 end
 
 
-function Concierge:update()
-    Concierge.super.update(self)
+local playing = false
+function Window:update()
+    -- Window.super.update(self)
 
     local isAButtonPressed = pd.buttonJustPressed(pd.kButtonA)
 
@@ -59,12 +55,19 @@ function Concierge:update()
     end
 
     if self.canInteract and isAButtonPressed then
-        print("ok")
-        sfx_dialogue:play()
+
+
+        print("hi")
+
+
+
+
         if not self.textbox.isActive then
             self.textbox:startDialogue()
         else
             self.textbox:getNextLine()
         end
+        self.textbox.currentBlock = 1
+        
     end
 end
