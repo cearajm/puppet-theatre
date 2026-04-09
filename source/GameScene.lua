@@ -60,6 +60,8 @@ function GameScene:loadInteractions(level)
         self.player:addSprite()
     elseif level == "Lounge" then
         self.player:addSprite()
+    elseif level == "Lounge3" then
+        self.player:addSprite()
     end
 
 end
@@ -122,7 +124,7 @@ function GameScene:update()
         local x, y = self.player:getPosition()
         local camx = 50 - x
         local camy = 50 - y
-        gfx.setDrawOffset(0, -y)
+        gfx.setDrawOffset(-x, 0)
         self.tilemap:draw(0, 0)
        
     
@@ -135,8 +137,8 @@ function GameScene:update()
     --     -- self.emptyTiles:draw(0, 104)
     -- end
 
-    -- gfx.setDrawOffset(0, 0)
-    -- gfx.clear()
+    gfx.clear()
+    gfx.setDrawOffset(0, 0)
 end
 
 

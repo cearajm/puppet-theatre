@@ -1,6 +1,7 @@
 
 
 *.DS_Store
+source\puppet-theatre.code-workspace
 
 # Compiled Lua sources
 luac.out

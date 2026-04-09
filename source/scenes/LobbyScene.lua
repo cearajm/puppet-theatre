@@ -73,6 +73,12 @@ function scene:update()
     elseif posx >= 400 then
         player:moveWithCollisions(0, player.y)
         GameScene.instance:moveToRoom("east")
+	elseif posy <=0 then
+		player:moveWithCollisions(player.x, 240)
+		GameScene.instance:moveToRoom("north")
+	elseif posy >= 240 then
+		player:moveWithCollisions(player.x, 0)
+		GameScene.instance:moveToRoom("south")
     end
 
 
