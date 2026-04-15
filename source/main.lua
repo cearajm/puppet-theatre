@@ -25,7 +25,7 @@ import 'myComicData.lua'
 -- mine
 import 'assets'
 import 'sprites'
-import 'menu'
+-- import 'menu'
 
 
 local pd <const> = playdate
@@ -62,7 +62,7 @@ end
 
 local function init()
 
-    showMenu()
+    -- showMenu()
     -- print("hi")
     Noble.new(LobbyScene)
 
