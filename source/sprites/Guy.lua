@@ -27,7 +27,9 @@ function Guy:init(string)
     -- self.textbox:setVisible(false)
 
     local text = {
-        {"hi puppy!!", "the lounge is under maintenance. you do NOT want to go in there", "so far like five people have gone in and haven't come out.",
+        {"hi puppy!!", "the lounge is under maintenance. you do NOT want to go inside",
+        "idek what, but something is seriously wrong in there lol !!",
+        "so far like five people have gone in and haven't come out.",
         "no, i didn't warn them. i didn't think to do that until now..."},
         -- {"hey puppy, i got a stellar tip today!"}
         {"hi puppy :)"}
@@ -59,16 +61,8 @@ function Guy:update()
         self.canInteract = true
     end
 
-    if self.string == "1" then
-        print("1")
-    elseif self.string == "2" then
-        print("2")
-    end
     if self.canInteract and isAButtonPressed then
-        -- self.ringCount += 1
-        -- print(self.ringCount)
-        -- Panels.Settings.snapToPanels = true
-        -- Panels.start(comicData)
+
         if self.string == "1" then
             if not self.textbox.isActive then
                 self.textbox:startDialogue()

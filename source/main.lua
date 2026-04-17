@@ -43,7 +43,7 @@ local musicPlayer = pd.sound.fileplayer.new(Audio.music)
 -- GameScene()
 -- local textbox = Textbox()
 
-local cutsceneIsPlaying = false
+cutsceneIsPlaying = false
 comicData = myComicData
 
 
@@ -57,6 +57,7 @@ function startCutScene()
     cutsceneIsPlaying = true
     -- LobbyScene:pause()
     print("yup")
+    print(cutsceneIsPlaying)
     Panels.startCutscene(comicData, cutsceneDidFinish())
 end
 
@@ -75,12 +76,14 @@ end
 
 function pd.update()
     -- print("hi it's puppet theatre")
-    if cutsceneIsPlaying then
-        Panels.update()
-        pd.timer.updateTimers()
-    else
-        LobbyScene.update()
-    end
+    -- if cutsceneIsPlaying then
+    --     Panels.update()
+    --     pd.timer.updateTimers()
+    -- else
+    --     LobbyScene.update()
+    -- end
+    LobbyScene.update()
+
     gfx.sprite.update()
 
     -- print(cutsceneIsPlaying)

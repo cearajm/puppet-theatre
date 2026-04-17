@@ -21,7 +21,7 @@ local isInElevator = false
 -- local bell = Bell()
 player = Player()
 gameScene = GameScene(player)
-local currentLevel = "Elevators"
+local currentLevel = "Window"
 
 
 

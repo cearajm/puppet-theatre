@@ -24,7 +24,9 @@ function Window:init()
 
     local text = {
         -- {"hi puppy :)"},
-        {"The fog is dense."}
+        {"A sprawling mountain range, obscured by an impenetrable abyss of dense fog.",
+        "Somehow, you can't seem to recall what lies beyond the hotel's grounds ...",
+        "... don't think about that. It's not important anymore."}
     }
 
     self.textbox = Textbox(text)
@@ -57,10 +59,8 @@ function Window:update()
     if self.canInteract and isAButtonPressed then
 
 
-        print("hi")
-
-
-
+        print("window")
+        -- startCutScene()
 
         if not self.textbox.isActive then
             self.textbox:startDialogue()
@@ -70,4 +70,12 @@ function Window:update()
         self.textbox.currentBlock = 1
         
     end
+    -- print(cutsceneIsPlaying)
+
+    -- if cutsceneIsPlaying then
+    --     print("playing")
+    --     Panels.update()
+    --     pd.timer.updateTimers()
+    -- end
+
 end

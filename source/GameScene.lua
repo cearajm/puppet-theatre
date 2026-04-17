@@ -16,7 +16,7 @@ local elevators = Elevators()
 local elevatorRide = ElevatorRide()
 local guy = Guy("1")
 local guy2 = Guy("2")
-local staff = Staff()
+-- local staff = Staff()
 local window = Window()
 
 -- level name == name in ldtk
@@ -25,7 +25,6 @@ function GameScene:init(player)
 
     -- self.currentLevel = "LobbyScene"
     self.currentLevel = nil
-    -- self:loadLevel("Elevators")
     self.player = player
     self.player:addSprite()
     GameScene.instance = self
@@ -66,7 +65,7 @@ function GameScene:loadInteractions(level)
         guy:addSprite()
     elseif level == "Lounge" then
         self.player:addSprite()
-        staff:addSprite()
+        -- staff:addSprite()
         guy2:addSprite()
     elseif level == "Lounge3" then
         self.player:addSprite()
@@ -98,7 +97,7 @@ function GameScene:loadLevel(level_name)
             layerSprite:setCenter(0, 0)
             layerSprite:moveTo(0, 0)
             layerSprite:setZIndex(layer.zIndex)
-            print(layerSprite:getZIndex())
+            -- print(layerSprite:getZIndex())
             layerSprite:add()
 
             -- create collision boxes
@@ -122,9 +121,9 @@ end
 function GameScene:update()
     -- GameScene.super.update(self)
     elevatorRide:update()
-    window:update()
+    -- window:update()
 
-    -- concierge.textbox:draw()
+    -- concierge.textbox:draw()6
     -- print(self.currentLevel)
 
     -- print(self.currentLevel)
@@ -147,7 +146,7 @@ function GameScene:update()
     -- end
 
     gfx.clear()
-    gfx.setDrawOffset(0, 0)
+    -- gfx.setDrawOffset(0, 0)
 end
 
 
