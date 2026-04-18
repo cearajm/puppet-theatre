@@ -39,6 +39,7 @@
             "label": "Playdate: Build and Run",
             "dependsOn": ["Playdate: Build", "Playdate: Run"],
             "dependsOrder": "sequence",
+            
             // Set as our default built task under Terminal->Run Build Task, or with ctrl/cmd+shift+B
             "group": {
                 "kind": "build",

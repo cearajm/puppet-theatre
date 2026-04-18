@@ -15,7 +15,6 @@ local bell = Bell()
 local elevators = Elevators()
 local elevatorRide = ElevatorRide()
 local guy = Guy("1")
-local guy2 = Guy("2")
 -- local staff = Staff()
 local window = Window()
 
@@ -66,7 +65,6 @@ function GameScene:loadInteractions(level)
     elseif level == "Lounge" then
         self.player:addSprite()
         -- staff:addSprite()
-        guy2:addSprite()
     elseif level == "Lounge3" then
         self.player:addSprite()
     end
@@ -128,15 +126,15 @@ function GameScene:update()
 
     -- print(self.currentLevel)
     
-    if self.currentLevel == "Lounge" then
-        local x, y = self.player:getPosition()
-        local camx = 50 - x
-        local camy = 50 - y
-        gfx.setDrawOffset(-x, 0)
-        self.tilemap:draw(0, 0)
+    -- if self.currentLevel == "Lounge" then
+    --     local x, y = self.player:getPosition()
+    --     local camx = 50 - x
+    --     local camy = 50 - y
+    --     gfx.setDrawOffset(-x, 0)
+    --     self.tilemap:draw(0, 0)
        
     
-    end
+    -- end
 
     -- gfx.setDrawOffset(0,0)
 
@@ -145,7 +143,7 @@ function GameScene:update()
     --     -- self.emptyTiles:draw(0, 104)
     -- end
 
-    gfx.clear()
+    -- gfx.clear()
     -- gfx.setDrawOffset(0, 0)
 end
 
