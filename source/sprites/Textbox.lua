@@ -117,11 +117,12 @@ function Textbox:draw()
     gfx.pushContext()
 
         gfx.setColor(gfx.kColorWhite)
-        gfx.fillRect(0,0,380,80)
+        gfx.fillRoundRect(0,0,380,80,10)
 
         gfx.setLineWidth(4)
         gfx.setColor(gfx.kColorBlack)
         gfx.drawRect(0,0,380,80)
+        -- gfx.drawRoundRect(0,0,380,80,5)
 
         -- gfx.drawTextInRect(self.text[currentLine], 10, 10, 200, 160)
         gfx.drawTextInRect(self.currentText[self.currentBlock][self.currentLine], 16, 16, 300, 160)

@@ -8,6 +8,7 @@ class("Window").extends(gfx.sprite)
 
 
 -- local panels = myComicData
+local cutsceneHasPlayed = false
 
 function Window:init()
     Window.super.init(self, area)
@@ -22,30 +23,34 @@ function Window:init()
     self:setTag(1)
 
 
+    -- local text = {
+    --     -- {"hi puppy :)"},
+    --     {"A sprawling mountain range, obscured by an impenetrable abyss of dense fog.",
+    --     "Somehow, you can't seem to recall what lies beyond the hotel's grounds ...",
+    --     "... don't think about that. It's not important anymore."}
+    -- }
     local text = {
         -- {"hi puppy :)"},
-        {"A sprawling mountain range, obscured by an impenetrable abyss of dense fog.",
-        "Somehow, you can't seem to recall what lies beyond the hotel's grounds ...",
-        "... don't think about that. It's not important anymore."}
+        {"The gardener is deadheading the roses.",
+        "Beyond the garden walls, the mountains lurk within a dense wall of fog.",
+        "(You can't seem to recall what lies beyond the hotel's grounds...)",
+        }
     }
-
     self.textbox = Textbox(text)
     self.textbox:setVisible(false)
 
 end
 
+
 function Window:collisionResponse(other)
-    
     return gfx.sprite.kCollisionTypeOverlap
 end
 
 
 local playing = false
 function Window:update()
-    -- Window.super.update(self)
 
     local isAButtonPressed = pd.buttonJustPressed(pd.kButtonA)
-
     local _, _, collisions, length = self:checkCollisions(self.x, self.y)
     if length == 0 then
         self.canInteract = false
@@ -57,25 +62,18 @@ function Window:update()
     end
 
     if self.canInteract and isAButtonPressed then
-
-
-        print("window")
-        -- startCutScene()
-
-        if not self.textbox.isActive then
-            self.textbox:startDialogue()
+        if not cutsceneHasPlayed then
+            startCutScene(gardenCutscene)
+            cutsceneHasPlayed = true
         else
-            self.textbox:getNextLine()
+            if not self.textbox.isActive and not cutsceneIsPlaying then
+                self.textbox:startDialogue()
+            else
+                self.textbox:getNextLine()
+            end
+            self.textbox.currentBlock = 1
         end
-        self.textbox.currentBlock = 1
-        
     end
-    -- print(cutsceneIsPlaying)
 
-    -- if cutsceneIsPlaying then
-    --     print("playing")
-    --     Panels.update()
-    --     pd.timer.updateTimers()
-    -- end
 
 end

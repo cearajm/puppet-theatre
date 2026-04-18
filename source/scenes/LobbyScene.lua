@@ -25,19 +25,18 @@ local currentLevel = "Window"
 
 
 
--- local staff = Staff(300, 60)
 scene.backgroundColor = Graphics.kColorWhite
 
 function scene:setValues()
 	self.currentLevel = nil
 end
+
 -- create game scene: display sprites
 function scene:init(__sceneProperties)
 	scene.super.init(self)
 
-	-- gameScene:loadLevel("LobbyScene")
-	gameScene:loadLevel("Window")
-	-- player:addSprite()
+	gameScene:loadLevel("LobbyScene")
+	-- gameScene:loadLevel("Window")
 	player:moveTo(200, 160)
 
 end

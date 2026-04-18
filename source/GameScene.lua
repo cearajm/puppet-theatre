@@ -64,13 +64,14 @@ function GameScene:loadInteractions(level)
         self.player:addSprite()
         window:addSprite()
         guy:addSprite()
-    elseif level == "Lounge" then
 
-        if not cutsceneHasPlayed then
-            startCutScene()
-            cutsceneHasPlayed = true
-        end
+    elseif level == "Lounge" then
         self.player:addSprite()
+        if not cutsceneHasPlayed then
+            startCutScene(loungeCutscene)
+            cutsceneHasPlayed = true
+            self.player:moveTo(44, 142)
+        end
 
     end
 

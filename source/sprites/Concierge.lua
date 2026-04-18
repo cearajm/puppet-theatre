@@ -9,6 +9,8 @@ class("Concierge").extends(gfx.sprite)
 
 
 local sfx_dialogue = sfx.new(Audio.concierge)
+cutsceneHasPlayed = false
+
 
 function Concierge:init()
     Concierge.super.init(self, area)
@@ -52,19 +54,24 @@ function Concierge:update()
     if length == 0 then
         self.canInteract = false
     end
-
     for _, collision in pairs(collisions) do
         local other = collision.other
         self.canInteract = true
     end
 
+    
     if self.canInteract and isAButtonPressed then
         print("ok")
-        sfx_dialogue:play()
-        if not self.textbox.isActive then
-            self.textbox:startDialogue()
+        if not cutsceneHasPlayed then
+            startCutScene(conciergeCutscene)
+            cutsceneHasPlayed = true
         else
-            self.textbox:getNextLine()
+            sfx_dialogue:play()
+            if not self.textbox.isActive and not cutsceneIsPlaying then
+                self.textbox:startDialogue()
+            else
+                self.textbox:getNextLine()
+            end
         end
     end
 end

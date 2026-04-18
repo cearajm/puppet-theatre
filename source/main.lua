@@ -1,7 +1,6 @@
 import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/crank"
-
 import 'CoreLibs/object'
 import 'CoreLibs/graphics'
 import 'CoreLibs/sprites'
@@ -25,7 +24,6 @@ import 'myComicData.lua'
 -- mine
 import 'assets'
 import 'sprites'
--- import 'menu'
 
 
 local pd <const> = playdate
@@ -41,30 +39,36 @@ local musicPlayer = pd.sound.fileplayer.new(Audio.music)
 
 
 cutsceneIsPlaying = false
-comicData = myComicData
+loungeCutscene = LoungePanels
+gardenCutscene = GardenPanels
+conciergeCutscene = ConciergePanels
+elevatorCutscene = ElevatorPanels
 
 
 function cutsceneDidFinish()
-    -- Player.instance.canMove = true
+    Player.instance.canMove = true
     cutsceneIsPlaying = false
     print("nope")
-    -- LobbyScene.resume()
 end
 
-function startCutScene()
-    -- Player.instance.canMove = false
+
+function startCutScene(cutscene)
+    -- start sequence, callback upon end
+    Player.instance.canMove = false
     cutsceneIsPlaying = true
-    -- LobbyScene:pause()
-    print("yup")
-    print("playing: ", cutsceneIsPlaying)
-    Panels.startCutscene(comicData, cutsceneDidFinish)
+    Panels.startCutscene(cutscene, cutsceneDidFinish)
 end
+
 
 local function init()
-
-    -- showMenu()
-    -- print("hi")
+    -- default Panels settings
     Panels.Settings.useChapterMenu = false
+    Panels.Settings.borderRadius = 8
+    Panels.Settings.borderWidth = 2
+    Panels.Settings.defaultFrame = { margin = 4, gap = 8 }
+    gfx.setFontFamily(gfx.getFont(gfx.font.kVariantBold))
+    
+    
     Noble.new(LobbyScene)
     LobbyScene:start()
     musicPlayer:setVolume(0.6)
@@ -74,27 +78,14 @@ end
 
 
 function pd.update()
-    -- print("asdfadf", cutsceneIsPlaying)
     gfx.sprite.update()
 
-    -- if pd.buttonIsPressed(pd.kButtonA) then
-    --     -- playdate.inputHandlers.pop()
-    --     startCutScene()
-    --     -- Panels.startCutScene(comicData)
-    -- end
     if cutsceneIsPlaying then
         Panels.update()
     else
         LobbyScene.update()
     end
-    -- LobbyScene.update()
     pd.timer.updateTimers()
-    pd.timer.updateTimers()
-    
-    
-
-
-    -- print(cutsceneIsPlaying)
 
 end
 

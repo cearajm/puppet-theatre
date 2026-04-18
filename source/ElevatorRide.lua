@@ -38,6 +38,7 @@ function ElevatorRide:update()
         end
         print("oiu")
     end
+    -- exit the left elevator
     if self.isInElevator and isBButtonPressed then
         GameScene.instance:moveToRoom("east")
         self.isInElevator = false

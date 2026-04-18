@@ -9,7 +9,9 @@ class("Elevators").extends(gfx.sprite)
 
 
 local sfx_elevators = sfx.new(Audio.concierge)
--- elevatorRide = ElevatorRide()
+local cutsceneHasPlayed = false
+
+-- elevatorRide = ElevatorRide
 
 
 
@@ -37,7 +39,9 @@ function Elevators:init()
         {"Guests only."}
     }
     local rightElevatorText = {
-        {"This one is still out of service..."},
+        -- {"This one is still out of service..."},
+        {"Um... it seems this one is still out of service."},
+        {"Just take the stairs."}
     }
 
     self.leftTextbox = Textbox(leftElevatorText)
@@ -69,7 +73,6 @@ function Elevators:update()
     if lengthLeft == 0 then
         self.canInteractLeft = false
     end
-
     for _, collision in pairs(collisions) do
         local other = collision.other
         self.canInteract = true
@@ -80,14 +83,19 @@ function Elevators:update()
         self.canInteractLeft = true
     end
 
+
     -- start dialogue for right side elevator
     if self.canInteract and isAButtonPressed then
         sfx_elevators:play()
-        if not self.rightTextbox.isActive then
-            self.rightTextbox:startDialogue()
+        if not cutsceneHasPlayed then
+            startCutScene(elevatorCutscene)
+            cutsceneHasPlayed = true
         else
-            self.rightTextbox:getNextLine()
-
+            if not self.rightTextbox.isActive and not cutsceneIsPlaying then
+                self.rightTextbox:startDialogue()
+            else
+                self.rightTextbox:getNextLine()
+            end
         end
     end
 
