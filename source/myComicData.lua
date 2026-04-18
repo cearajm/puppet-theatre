@@ -13,36 +13,36 @@ myComicData = { -- a list of SEQUENCES for this comic
 				}
 			},
 
-			{ -- Panel 2
-				layers = {
-					{image = "thumbs/panel_6.png"},
-				}
-			},
-			{ -- Panel 2
-				layers = {
-					{image = "thumbs/panel_3.png"},
-				}
-			},
-			{ -- Panel 2
-			layers = {
-				{image = "thumbs/panel_4.png"},
-			}
-			},
-			{ -- Panel 2
-				layers = {
-					{image = "thumbs/panel_7.png"},
-				}
-			},
-			{ -- Panel 2
-				layers = {
-					{image = "thumbs/panel_1.png"},
-				}
-			},
-			{ -- Panel 2
-				layers = {
-					{image = "thumbs/panel_5.png"},
-				}
-			},
+			-- { -- Panel 2
+			-- 	layers = {
+			-- 		{image = "thumbs/panel_6.png"},
+			-- 	}
+			-- },
+			-- { -- Panel 2
+			-- 	layers = {
+			-- 		{image = "thumbs/panel_3.png"},
+			-- 	}
+			-- },
+			-- { -- Panel 2
+			-- layers = {
+			-- 	{image = "thumbs/panel_4.png"},
+			-- }
+			-- },
+			-- { -- Panel 2
+			-- 	layers = {
+			-- 		{image = "thumbs/panel_7.png"},
+			-- 	}
+			-- },
+			-- { -- Panel 2
+			-- 	layers = {
+			-- 		{image = "thumbs/panel_1.png"},
+			-- 	}
+			-- },
+			-- { -- Panel 2
+			-- 	layers = {
+			-- 		{image = "thumbs/panel_5.png"},
+			-- 	}
+			-- },
 
 
 		}

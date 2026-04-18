@@ -36,7 +36,7 @@ function scene:init(__sceneProperties)
 	scene.super.init(self)
 
 	-- gameScene:loadLevel("LobbyScene")
-	gameScene:loadLevel("LobbyScene")
+	gameScene:loadLevel("Window")
 	-- player:addSprite()
 	player:moveTo(200, 160)
 
@@ -58,28 +58,33 @@ end
 -- This runs once per frame.
 function scene:update()
 	scene.super.update(self)
-	gameScene:update()
 	currentLevel = gameScene.currentLevel
 	-- print("from main: ", currentLevel)
-		
+	gameScene:update()
+	
 
 
 	
 	-- move to new room and teleport player to the opposite
 	local posx, posy = player:getPosition()
     if posx <= 0 then
-        player:moveWithCollisions(400, player.y)
+		print(player.x)
+        player:moveTo(398, player.y)
         GameScene.instance:moveToRoom("west")
+		print(player.x)
+
     elseif posx >= 400 then
-        player:moveWithCollisions(0, player.y)
+        player:moveTo(2, player.y)
         GameScene.instance:moveToRoom("east")
-	elseif posy <=0 then
-		player:moveWithCollisions(player.x, 240)
-		GameScene.instance:moveToRoom("north")
-	elseif posy >= 240 then
-		player:moveWithCollisions(player.x, 0)
-		GameScene.instance:moveToRoom("south")
+	-- elseif posy <=0 then
+	-- 	player:moveWithCollisions(player.x, 240)
+	-- 	GameScene.instance:moveToRoom("north")
+	-- elseif posy >= 240 then
+	-- 	player:moveWithCollisions(player.x, 0)
+	-- 	GameScene.instance:moveToRoom("south")
     end
+
+
 
 
 end
@@ -127,7 +132,7 @@ scene.inputHandler = {
 	-- A button
 	--
 	AButtonDown = function()			-- Runs once when button is pressed.
-	
+		print("hello")
 	end,
 	AButtonHold = function()			-- Runs every frame while the player is holding button down.
 		-- Your code here
@@ -205,13 +210,13 @@ scene.inputHandler = {
 
 	-- Crank
 	--
-	-- cranked = function(change, acceleratedChange)	-- Runs when the crank is rotated. See Playdate SDK documentation for details.
-	-- 	-- Your code here
-	-- end,
-	-- crankDocked = function()						-- Runs once when when crank is docked.
-	-- 	-- Your code here
-	-- end,
-	-- crankUndocked = function()						-- Runs once when when crank is undocked.
-	-- 	-- Your code here
-	-- end
+	cranked = function(change, acceleratedChange)	-- Runs when the crank is rotated. See Playdate SDK documentation for details.
+		-- Your code here
+	end,
+	crankDocked = function()						-- Runs once when when crank is docked.
+		-- Your code here
+	end,
+	crankUndocked = function()						-- Runs once when when crank is undocked.
+		-- Your code here
+	end
 }

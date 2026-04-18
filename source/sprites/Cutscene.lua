@@ -1,37 +1,35 @@
 local pd <const> = playdate
 local gfx <const> = pd.graphics
-local sfx <const> = pd.sound.sampleplayer
 
 
 local area <const> = gfx.sprite.new()
-class("Bell").extends(gfx.sprite)
+class("Cutscene").extends(gfx.sprite)
 
 
--- local sfx_bell = sfx.new(Audio.bell2)
-local sfx_bell = sfx.new(Audio.bell)
--- local panels = myComicData
 
-function Bell:init()
-    Bell.super.init(self, area)
-
+function Cutscene:init()
+    Cutscene.super.init(self, area)
+    
     self:setSize(8, 8)
     self:setCollideRect(0, 0, 8, 8)
     self:setCenter(0.5, 0.5)
-	self:moveTo(270, 124)
+	self:moveTo(200, 142)
 
     self.canInteract = true
-    self.ringCount = 0
+    self:setTag(1)
 
 end
 
 
-function Bell:collisionResponse(other)
+function Cutscene:collisionResponse(other)
     return gfx.sprite.kCollisionTypeOverlap
 end
 
-
-function Bell:update()
-    Bell.super.update(self)
+function Cutscene:start()
+    Panels.start(comicData)
+end
+function Cutscene:update()
+    Cutscene.super.update(self)
 
     local isAButtonPressed = pd.buttonJustPressed(pd.kButtonA)
 
@@ -46,11 +44,9 @@ function Bell:update()
     end
 
     if self.canInteract and isAButtonPressed then
-        sfx_bell:play()
-        self.ringCount += 1
-        print(self.ringCount)
+        print("cutscene start")
         -- Panels.Settings.snapToPanels = true
-        -- Panels.start(comicData)
+        -- self:start(comicData)
         
     end
 end

@@ -39,34 +39,33 @@ local musicPlayer = pd.sound.fileplayer.new(Audio.music)
 -- concierge:add()
 -- staff:add()
 
--- local lobbyScene = Noble.new(LobbyScene)
--- GameScene()
--- local textbox = Textbox()
 
 cutsceneIsPlaying = false
 comicData = myComicData
 
 
 function cutsceneDidFinish()
+    -- Player.instance.canMove = true
     cutsceneIsPlaying = false
     print("nope")
     -- LobbyScene.resume()
 end
 
 function startCutScene()
+    -- Player.instance.canMove = false
     cutsceneIsPlaying = true
     -- LobbyScene:pause()
     print("yup")
-    print(cutsceneIsPlaying)
-    Panels.startCutscene(comicData, cutsceneDidFinish())
+    print("playing: ", cutsceneIsPlaying)
+    Panels.startCutscene(comicData, cutsceneDidFinish)
 end
 
 local function init()
 
     -- showMenu()
     -- print("hi")
+    Panels.Settings.useChapterMenu = false
     Noble.new(LobbyScene)
-
     LobbyScene:start()
     musicPlayer:setVolume(0.6)
     musicPlayer:play()
@@ -75,16 +74,25 @@ end
 
 
 function pd.update()
-    -- print("hi it's puppet theatre")
-    -- if cutsceneIsPlaying then
-    --     Panels.update()
-    --     pd.timer.updateTimers()
-    -- else
-    --     LobbyScene.update()
-    -- end
-    LobbyScene.update()
-
+    -- print("asdfadf", cutsceneIsPlaying)
     gfx.sprite.update()
+
+    -- if pd.buttonIsPressed(pd.kButtonA) then
+    --     -- playdate.inputHandlers.pop()
+    --     startCutScene()
+    --     -- Panels.startCutScene(comicData)
+    -- end
+    if cutsceneIsPlaying then
+        Panels.update()
+    else
+        LobbyScene.update()
+    end
+    -- LobbyScene.update()
+    pd.timer.updateTimers()
+    pd.timer.updateTimers()
+    
+    
+
 
     -- print(cutsceneIsPlaying)
 

@@ -41,8 +41,8 @@ function Player:init(gameManager)
 
     self.velocity = velocity
     self.canMove = true
-    self:setIgnoresDrawOffset(true)
     self.gameManager = gameManager
+    self:setIgnoresDrawOffset(true)
 
 end
 
