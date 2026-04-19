@@ -40,8 +40,7 @@ function Elevators:init()
     }
     local rightElevatorText = {
         -- {"This one is still out of service..."},
-        {"Um... it seems this one is still out of service."},
-        {"Just take the stairs."}
+        {"Um... it seems this one is still out of service.", "Just take the stairs."}
     }
 
     self.leftTextbox = Textbox(leftElevatorText)

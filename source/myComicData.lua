@@ -23,13 +23,89 @@ GardenPanels = {
 		title = "garden",
 		isCutscene = true,
 		transitionDuration = 0,
+		backgroundColor = Panels.Color.BLACK,
 
 		panels = {
 			{
+				borderless = true,
 				layers = {
-					{image = "thumbs/panel_4.png"}
+					{
+						text = "yes, isn't my darling Guinevere so well-behaved? i trained her myself ~",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
 				}
-			}
+			},
+			{
+				layers = {
+					{image = "thumbs/lady.png"}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "she used to be such a dreadful beast! fortunately, she responds very well to a swift kick ~",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						-- effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
+			{
+				layers = {
+					{image = "thumbs/gardener.png"}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "she hasn't been winning shows like she used to, so i'll need to replace her soon.",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						-- effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					},
+
+				}
+			},
+			{
+				layers = {
+					{image = "thumbs/dog.png"}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "ahh... but what a beautiful garden... you can send the tulips to my room ~ <3",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						-- effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
 		}
 	}
 }
