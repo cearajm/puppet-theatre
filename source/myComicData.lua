@@ -42,6 +42,34 @@ GardenPanels = {
 					}
 				}
 			},
+			
+		}
+	}
+}
+MaidPanels = {
+	{
+		title = "garden",
+		isCutscene = true,
+		transitionDuration = 0,
+		backgroundColor = Panels.Color.BLACK,
+
+		panels = {
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "[ imagine there is maid comic here and it's really good ]",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
 			{
 				layers = {
 					{image = "thumbs/lady.png"}

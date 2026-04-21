@@ -16,6 +16,7 @@ local elevators = Elevators()
 local elevatorRide = ElevatorRide()
 local guy = Guy("1")
 local window = Window()
+local maid = Maid()
 local cutscene = Cutscene()
 local cutsceneHasPlayed = false
 
@@ -54,6 +55,7 @@ function GameScene:loadInteractions(level)
         self.player:addSprite()
         elevators:addSprite()
         elevators.elevator1:addSprite()
+        maid:addSprite()
     elseif level == "ElevatorRide" then
         print("here")
         elevatorRide.textbox:addSprite()

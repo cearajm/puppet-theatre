@@ -43,6 +43,7 @@ loungeCutscene = LoungePanels
 gardenCutscene = GardenPanels
 conciergeCutscene = ConciergePanels
 elevatorCutscene = ElevatorPanels
+maidCutscene = MaidPanels
 
 
 function cutsceneDidFinish()
