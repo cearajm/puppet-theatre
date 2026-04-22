@@ -17,6 +17,7 @@ local elevatorRide = ElevatorRide()
 local guy = Guy("1")
 local window = Window()
 local maid = Maid()
+local page = Page()
 local cutscene = Cutscene()
 local cutsceneHasPlayed = false
 
@@ -62,18 +63,20 @@ function GameScene:loadInteractions(level)
         elevatorRide.isInElevator = true
         -- self.player:addSprite()
 
-    elseif level == "Window" then
+    elseif level == "Garden" then
         self.player:addSprite()
         window:addSprite()
-        guy:addSprite()
+        -- guy:addSprite()
 
     elseif level == "Lounge" then
         self.player:addSprite()
-        if not cutsceneHasPlayed then
-            startCutScene(loungeCutscene)
-            cutsceneHasPlayed = true
-            self.player:moveTo(44, 142)
-        end
+        page:addSprite()
+        page.stage:addSprite()
+        -- if not cutsceneHasPlayed then
+        --     startCutScene(loungeCutscene)
+        --     cutsceneHasPlayed = true
+        --     self.player:moveTo(44, 142)
+        -- end
 
     end
 

@@ -14,13 +14,15 @@ function Window:init()
     Window.super.init(self, area)
 
     self:setSize(8, 8)
-    self:setCollideRect(0, 0, 200, 12)
+    self:setCollideRect(0, 0, 340, 12)
     self:setCenter(0.5, 0.5)
 	self:moveTo(42, 76)
 
     self.canInteract = false
     self.ringCount = 0
     self:setTag(1)
+    self:setCollidesWithGroups(2)
+
 
 
     -- local text = {

@@ -19,6 +19,9 @@ function Concierge:init()
     self:setCollideRect(0, 0, 8, 8)
     self:setCenter(0.5, 0.5)
 	self:moveTo(200, 124)
+    self:setCollidesWithGroups(2)
+
+    
 
     self.canInteract = true
 

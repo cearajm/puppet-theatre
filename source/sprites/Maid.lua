@@ -14,26 +14,22 @@ function Maid:init()
     Maid.super.init(self, area)
 
     self:setSize(8, 8)
-    self:setCollideRect(0, 0, 140, 100)
+    self:setCollideRect(0, 0, 112, 30)
     self:setCenter(0.5, 0.5)
-	self:moveTo(86, 120)
+	self:moveTo(86, 150)
 
     self.canInteract = false
     self.ringCount = 0
     self:setTag(1)
+    self:setCollidesWithGroups(2)
 
 
-    -- local text = {
-    --     -- {"hi puppy :)"},
-    --     {"A sprawling mountain range, obscured by an impenetrable abyss of dense fog.",
-    --     "Somehow, you can't seem to recall what lies beyond the hotel's grounds ...",
-    --     "... don't think about that. It's not important anymore."}
-    -- }
+
+
     local text = {
         -- {"hi puppy :)"},
-        {"The gardener is deadheading the roses.",
-        "Beyond the garden walls, the mountains lurk within a dense wall of fog.",
-        "(You can't seem to recall what lies beyond the hotel's grounds...)",
+        {"(the guest is always right, or something like that...)",
+
         }
     }
     self.textbox = Textbox(text)

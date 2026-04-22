@@ -18,6 +18,64 @@ ConciergePanels = {
 		}
 	}
 }
+MaidPanels = {
+	{
+		title = "maid",
+		isCutscene = true,
+		transitionDuration = 0,
+		backgroundColor = Panels.Color.BLACK,
+
+		panels = {
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "[ imagine there is a maid comic here and it's really good ]",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
+
+			
+		}
+	}
+}
+PagePanels = {
+	{
+		title = "page",
+		isCutscene = true,
+		transitionDuration = 0,
+		backgroundColor = Panels.Color.BLACK,
+
+		panels = {
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "[ dinner time ]",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
+
+			
+		}
+	}
+}
 GardenPanels = {
 	{
 		title = "garden",
@@ -31,34 +89,6 @@ GardenPanels = {
 				layers = {
 					{
 						text = "yes, isn't my darling Guinevere so well-behaved? i trained her myself ~",
-						color = Panels.Color.WHITE,
-
-						alignment = Panels.TextAlignment.CENTER,
-						x = 40,
-						y = 80,
-						rect = {width = 300, height = 240},
-						effect = {type = Panels.Effect.TYPE_ON},
-						-- margin = {left = 80, right = 40}
-					}
-				}
-			},
-			
-		}
-	}
-}
-MaidPanels = {
-	{
-		title = "garden",
-		isCutscene = true,
-		transitionDuration = 0,
-		backgroundColor = Panels.Color.BLACK,
-
-		panels = {
-			{
-				borderless = true,
-				layers = {
-					{
-						text = "[ imagine there is maid comic here and it's really good ]",
 						color = Panels.Color.WHITE,
 
 						alignment = Panels.TextAlignment.CENTER,

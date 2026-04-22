@@ -9483,7 +9483,7 @@
 			"__neighbours": [{ "levelIid": "b81bec90-21a0-11f1-8fd6-d774464e4d51", "dir": "w" }]
 		},
 		{
-			"identifier": "Garden",
+			"identifier": "Level_5",
 			"iid": "b81bec90-21a0-11f1-8fd6-d774464e4d51",
 			"uid": 102,
 			"worldX": 800,
@@ -9493,7 +9493,7 @@
 			"pxHei": 240,
 			"__bgColor": "#696A79",
 			"bgColor": null,
-			"useAutoIdentifier": false,
+			"useAutoIdentifier": true,
 			"bgRelPath": null,
 			"bgPos": null,
 			"bgPivotX": 0.5,

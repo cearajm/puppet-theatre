@@ -35,8 +35,9 @@ function Player:init(gameManager)
     -- self:setScale(2)
     self:moveTo(x, y)
     self:setZIndex(100)
-    self:setTag(1)
     self:setCollideRect(14, 54, 36, 10)
+    self:setTag(1)
+    self:setGroups(2)
     -- self:setCollideRect(3, 3, 10, 13)
 
     self.velocity = velocity

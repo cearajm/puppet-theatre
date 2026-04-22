@@ -23,6 +23,7 @@ function Elevators:init()
     self:setCenter(0.5, 0.5)
 	self:moveTo(220, 80)
     self:setTag(1)
+    self:setCollidesWithGroups(2)
 
     self.elevator1 = gfx.sprite.new()
     self.elevator1:setSize(8, 8)
@@ -30,6 +31,8 @@ function Elevators:init()
     self.elevator1:setCenter(0.5, 0.5)
 	self.elevator1:moveTo(172, 80)
     self.elevator1:setTag(1)
+    self.elevator1:setCollidesWithGroups(2)
+
     self.gameScene = GameScene.instance
 
 
