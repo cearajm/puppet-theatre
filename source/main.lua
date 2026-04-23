@@ -47,6 +47,17 @@ maidCutscene = MaidPanels
 pageCutscene = PagePanels
 
 scenesFound = 0
+isEndSequence = false
+isEndScene = false
+
+local bgImage <const> = gfx.image.new("assets/images/end.png")
+local bgSprite = gfx.sprite.new(bgImage)
+local elevator <const> = gfx.image.new("assets/images/elevator.png")
+local elevatorSprite = gfx.sprite.new(elevator)
+
+local baseY = 1200
+local velocity = 20
+
 
 
 function cutsceneDidFinish()
@@ -64,6 +75,44 @@ function startCutScene(cutscene)
     Player.instance.canMove = false
     cutsceneIsPlaying = true
     Panels.startCutscene(cutscene, cutsceneDidFinish)
+end
+
+function startEndScene()
+    isEndScene = true
+    print("goodbye")
+    bgSprite:setZIndex(20)
+    bgSprite:setCenter(0, 0)
+    bgSprite:moveTo(0, 0)
+    bgSprite:addSprite()
+
+    elevatorSprite:setZIndex(22)
+    elevatorSprite:setCenter(0, 0)
+    elevatorSprite:moveTo(14, 14)
+    elevatorSprite:addSprite()
+    -- Player.instance:addSprite()
+
+
+end
+
+function scrollElevator()
+    local change, acceleratedChange = pd.getCrankChange()
+    baseY -= change
+    
+
+    if change > 0 and bgSprite.y > -960 then
+        print("going down")
+        bgSprite:moveBy(0, -velocity)
+
+    elseif change < 0 then
+        print("going up")
+    end
+
+    if bgSprite.y == -960 then
+        print("it's over man")
+        -- startCutScene(maidCutscene)
+        -- isEndScene = false
+    end
+
 end
 
 
@@ -90,6 +139,8 @@ function pd.update()
     if cutsceneIsPlaying then
         Panels.update()
         -- print(Panels.vars.isPuppetized)
+    elseif isEndScene then
+        scrollElevator()
     else
         LobbyScene.update()
     end

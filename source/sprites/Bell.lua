@@ -18,6 +18,7 @@ function Bell:init()
     self:setCollideRect(0, 0, 8, 8)
     self:setCenter(0.5, 0.5)
 	self:moveTo(270, 124)
+    self:setCollidesWithGroups(2)
 
     self.canInteract = true
     self.ringCount = 0

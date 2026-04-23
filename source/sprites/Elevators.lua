@@ -110,7 +110,14 @@ function Elevators:update()
         --     self.leftTextbox:getNextLine()
         -- end
         print("asdfasdf")
-        GameScene.instance:moveToRoom("west")
+
+        isEndSequence = true
+        if isEndSequence then
+            GameScene.instance:moveToRoom("north")
+            startEndScene()
+        else
+            GameScene.instance:moveToRoom("west")
+        end
     end
 
 end

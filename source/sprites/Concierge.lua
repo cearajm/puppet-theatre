@@ -94,6 +94,7 @@ function Concierge:update()
             if not cutsceneHasPlayed then
                 startCutScene(conciergeCutscene)
                 cutsceneHasPlayed = true
+                isEndSequence = true
             end
         end
 
