@@ -9,7 +9,9 @@ class("Concierge").extends(gfx.sprite)
 
 
 local sfx_dialogue = sfx.new(Audio.concierge)
-cutsceneHasPlayed = false
+local cutsceneHasPlayed = false
+local resultText = nil
+
 
 
 function Concierge:init()
@@ -34,11 +36,28 @@ function Concierge:init()
         "... ... ...",
         "You keep up the good work though."},
         {"Huh? I can only see the top of your head, Puppet."},
-        {"Do let me know if something interesting happens."}
+        -- {"Do let me know if something interesting happens."}
+        {"Come see me after you've finished your rounds today."}
+    }
+
+    local goodText = {
+        {"Very good, Puppet. You are truly the heart of this hotel.",
+        "In fact, we staff have prepared a gift for you. To show our gratitude."}
+    }
+    local badText = {
+        {"Is that so...? I see.",
+        "You must be feeling unwell.",
+        "Take a break downstairs. I will take care of everything else today.",}
     }
 
     self.textbox = Textbox(text)
+    self.goodTextbox = Textbox(goodText)
+    self.badTextbox = Textbox(badText)
     self.textbox:setVisible(false)
+    self.goodTextbox:setVisible(false)
+    self.badTextbox:setVisible(false)
+
+    self.currentTextbox = self.textbox
     
 end
 
@@ -50,6 +69,7 @@ end
 
 function Concierge:update()
     Concierge.super.update(self)
+    -- print(cutsceneIsPlaying)
 
     local isAButtonPressed = pd.buttonJustPressed(pd.kButtonA)
 
@@ -64,17 +84,37 @@ function Concierge:update()
 
     
     if self.canInteract and isAButtonPressed then
-        print("ok")
-        if not cutsceneHasPlayed then
-            startCutScene(conciergeCutscene)
-            cutsceneHasPlayed = true
-        else
-            sfx_dialogue:play()
-            if not self.textbox.isActive and not cutsceneIsPlaying then
-                self.textbox:startDialogue()
-            else
-                self.textbox:getNextLine()
+        -- set dialogue to display: before vs after cutscene
+        -- scenesFound = 2
+        if scenesFound < 2 then
+            self.currentTextbox = self.textbox
+
+        -- play cutscene when all comics have been found
+        elseif scenesFound == 2 then
+            if not cutsceneHasPlayed then
+                startCutScene(conciergeCutscene)
+                cutsceneHasPlayed = true
             end
         end
+
+        if not cutsceneIsPlaying then
+            -- after cutscene, set textbox based on the selected choices
+            if cutsceneHasPlayed then
+                local result = Panels.vars.garden + Panels.vars.garden + Panels.vars.garden
+                if result < 3 then
+                    self.currentTextbox = self.badTextbox
+                elseif result == 3 then
+                    self.currentTextbox = self.goodTextbox
+                end
+            end
+            -- show textbox
+            if not self.currentTextbox.isActive then
+                self.currentTextbox:startDialogue()
+            else
+                self.currentTextbox:getNextLine()
+            end
+        end
+
     end
+
 end

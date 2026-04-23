@@ -46,11 +46,16 @@ elevatorCutscene = ElevatorPanels
 maidCutscene = MaidPanels
 pageCutscene = PagePanels
 
+scenesFound = 0
+
 
 function cutsceneDidFinish()
     Player.instance.canMove = true
     cutsceneIsPlaying = false
-    print("nope")
+    print("finished")
+    print("garden: ", Panels.vars.garden)
+    print("garden: ", Panels.vars.elevators)
+    print("garden: ", Panels.vars.lounge)
 end
 
 
@@ -84,6 +89,7 @@ function pd.update()
 
     if cutsceneIsPlaying then
         Panels.update()
+        -- print(Panels.vars.isPuppetized)
     else
         LobbyScene.update()
     end

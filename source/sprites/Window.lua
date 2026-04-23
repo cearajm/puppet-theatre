@@ -67,6 +67,7 @@ function Window:update()
         if not cutsceneHasPlayed then
             startCutScene(gardenCutscene)
             cutsceneHasPlayed = true
+            scenesFound += 1
         else
             if not self.textbox.isActive and not cutsceneIsPlaying then
                 self.textbox:startDialogue()

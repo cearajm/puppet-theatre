@@ -122,3 +122,19 @@ function Page:update()
 
 
 end
+
+
+-- intro dialogue
+-- show first textbox
+
+-- cutscene
+-- if scenesfound == 3 then start cutscene and do not start dialogue
+-- OR
+-- if scenesfound == 3 then set new textbox then start cutscene
+
+-- ending dialogue
+-- if cutsceneHasPlayed then set textbox to one of two endings
+
+-- not found
+-- found
+-- cutsceneHasPlayed

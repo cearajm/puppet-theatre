@@ -14,7 +14,79 @@ ConciergePanels = {
 				layers = {
 					{image = "thumbs/panel_2.png"}
 				}
-			}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "so, what do you think?",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
+			{
+				choiceList = {
+					buttons = {
+						{ label = "the garden is a paradise", var = { key = "garden", value = 1} },
+						{ label = "i need to kick that lady", var = { key = "garden", value = 0} }
+					}
+				}
+			},
+			{
+				layers = {
+					{image = "thumbs/panel_2.png"}
+				}
+			},
+			{
+				choiceList = {
+					buttons = {
+						{ label = "she's making mistakes", var = { key = "elevators", value = 1} },
+						{ label = "that guy needs to be poisoned for real", var = { key = "elevators", value = 0} }
+					}
+				}
+			},
+			{
+				layers = {
+					{image = "thumbs/panel_2.png"}
+				}
+			},
+			{
+				choiceList = {
+					buttons = {
+						{ label = "the future seems bright", var = { key = "lounge", value = 1} },
+						{ label = "i swear i will push that guy off the mountain", var = { key = "lounge", value = 0} }
+					}
+				}
+			},
+			{
+				layers = {
+					{image = "thumbs/panel_2.png"}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "... I see. Thank you, Puppet.",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
+
 		}
 	}
 }

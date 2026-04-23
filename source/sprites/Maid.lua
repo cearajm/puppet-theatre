@@ -64,6 +64,7 @@ function Maid:update()
         if not cutsceneHasPlayed then
             startCutScene(maidCutscene)
             cutsceneHasPlayed = true
+            scenesFound += 1
         else
             if not self.textbox.isActive and not cutsceneIsPlaying then
                 self.textbox:startDialogue()
