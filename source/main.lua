@@ -45,10 +45,15 @@ conciergeCutscene = ConciergePanels
 elevatorCutscene = ElevatorPanels
 maidCutscene = MaidPanels
 pageCutscene = PagePanels
+promotionCutscene = promotionEndPanels
+puppetCutscene = puppetEndPanels
 
+result = 0
 scenesFound = 0
 isEndSequence = false
 isEndScene = false
+local atBottom = false
+local endHasPlayed = false
 
 local bgImage <const> = gfx.image.new("assets/images/end.png")
 local bgSprite = gfx.sprite.new(bgImage)
@@ -63,6 +68,12 @@ local velocity = 20
 function cutsceneDidFinish()
     Player.instance.canMove = true
     cutsceneIsPlaying = false
+
+    if endHasPlayed then
+        resetGame()
+        -- GameScene.instance:loadLevel("LobbyScene")
+        -- Player.instance:moveTo(200, 140)
+    end
     print("finished")
     print("garden: ", Panels.vars.garden)
     print("garden: ", Panels.vars.elevators)
@@ -108,11 +119,14 @@ function scrollElevator()
     end
 
     if bgSprite.y == -960 then
-        print("it's over man")
-        -- startCutScene(maidCutscene)
+        atBottom = true
+        -- startCutScene(endCutscene)
         -- isEndScene = false
     end
+end
 
+function startLoop()
+    print("it's so over")
 end
 
 
@@ -138,13 +152,31 @@ function pd.update()
 
     if cutsceneIsPlaying then
         Panels.update()
-        -- print(Panels.vars.isPuppetized)
     elseif isEndScene then
         scrollElevator()
     else
         LobbyScene.update()
     end
     pd.timer.updateTimers()
+
+
+    if pd.buttonIsPressed(pd.kButtonA) then
+        print("result: ", result)
+        if atBottom and not endHasPlayed then
+            endHasPlayed = true
+            isEndScene = false
+            if result == 3 then
+                startCutScene(promotionCutscene)
+            else
+                startCutScene(puppetCutscene)
+            end
+        end
+    end
+end
+
+function resetGame()
+    gfx.sprite.removeAll()
+    pd.restart()
 
 end
 

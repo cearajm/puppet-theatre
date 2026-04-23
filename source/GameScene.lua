@@ -49,6 +49,7 @@ function GameScene:loadInteractions(level)
     print(level)
 
     if level == "LobbyScene" then
+        print("yahoo")
         self.player:addSprite()
         concierge:addSprite()
         bell:addSprite()
@@ -143,15 +144,15 @@ function GameScene:update()
 
     -- print(self.currentLevel)
     
-    if self.currentLevel == "End" then
-        local x, y = self.player:getPosition()
-        local camx = 50 - x
-        local camy = 50 - y
-        gfx.setDrawOffset(-x, 0)
-        self.tilemap:draw(0, 0)
+    -- if self.currentLevel == "End" then
+    --     local x, y = self.player:getPosition()
+    --     local camx = 50 - x
+    --     local camy = 50 - y
+    --     gfx.setDrawOffset(-x, 0)
+    --     self.tilemap:draw(0, 0)
        
     
-    end
+    -- end
     -- gfx.setDrawOffset(0,0)
 
 

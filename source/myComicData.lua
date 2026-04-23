@@ -34,7 +34,7 @@ ConciergePanels = {
 			{
 				choiceList = {
 					buttons = {
-						{ label = "the garden is a paradise", var = { key = "garden", value = 1} },
+						{ label = "i am proud of our staff", var = { key = "garden", value = 1} },
 						{ label = "i need to kick that lady", var = { key = "garden", value = 0} }
 					}
 				}
@@ -47,7 +47,7 @@ ConciergePanels = {
 			{
 				choiceList = {
 					buttons = {
-						{ label = "she's making mistakes", var = { key = "elevators", value = 1} },
+						{ label = "our reputation is impeccable", var = { key = "elevators", value = 1} },
 						{ label = "that guy needs to be poisoned for real", var = { key = "elevators", value = 0} }
 					}
 				}
@@ -60,8 +60,8 @@ ConciergePanels = {
 			{
 				choiceList = {
 					buttons = {
-						{ label = "the future seems bright", var = { key = "lounge", value = 1} },
-						{ label = "i swear i will push that guy off the mountain", var = { key = "lounge", value = 0} }
+						{ label = "this work is important", var = { key = "lounge", value = 1} },
+						{ label = "gonna push that rich kid off the mountain", var = { key = "lounge", value = 0} }
 					}
 				}
 			},
@@ -87,6 +87,90 @@ ConciergePanels = {
 				}
 			},
 
+		}
+	}
+}
+promotionEndPanels = {
+	{
+		title = "everybody lives",
+		isCutscene = true,
+		transitionDuration = 1500,
+		backgroundColor = Panels.Color.BLACK,
+		direction = Panels.ScrollAxis.VERTICAL,
+
+		panels = {
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "you've been promoted. good for you.",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+					}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "asshole.",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+					}
+				}
+			},
+
+			
+		}
+	}
+}
+puppetEndPanels = {
+	{
+		title = "everybody dies",
+		isCutscene = true,
+		transitionDuration = 1500,
+		backgroundColor = Panels.Color.BLACK,
+		direction = Panels.ScrollAxis.VERTICAL,
+
+		panels = {
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "ending in which you get eaten",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+					}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "and the staff just start killing ppl i guess.",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+					}
+				}
+			},
+
+			
 		}
 	}
 }
@@ -148,6 +232,7 @@ PagePanels = {
 		}
 	}
 }
+
 GardenPanels = {
 	{
 		title = "garden",
@@ -268,41 +353,43 @@ LoungePanels = { -- a list of SEQUENCES for this comic
 		borderless = true,
 		
 		panels = { -- a list of PANELS for Sequence 1
-			-- { -- Panel 1
-			-- 	layers = {
-			-- 		{image = "thumbs/panel_2.png"},
-			-- 	}
-			-- },
-			{ -- Panel 2
+			{
+				borderless = true,
 				layers = {
-					{image = "thumbs/panel_6.png"},
+					{
+						text = "[ guy who is insufferable ]",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
 				}
 			},
 			-- { -- Panel 2
 			-- 	layers = {
-			-- 		{image = "thumbs/panel_3.png"},
+			-- 		{image = "thumbs/panel_6.png"},
+			-- 	}
+			-- },
+
+			-- { -- Panel 2
+			-- 	layers = {
+			-- 		{image = "thumbs/panel_7.png"},
 			-- 	}
 			-- },
 			-- { -- Panel 2
-			-- layers = {
-			-- 	{image = "thumbs/panel_4.png"},
-			-- }
+			-- 	layers = {
+			-- 		{image = "thumbs/panel_1.png"},
+			-- 	}
 			-- },
-			{ -- Panel 2
-				layers = {
-					{image = "thumbs/panel_7.png"},
-				}
-			},
-			{ -- Panel 2
-				layers = {
-					{image = "thumbs/panel_1.png"},
-				}
-			},
-			{ -- Panel 2
-				layers = {
-					{image = "thumbs/panel_5.png"},
-				}
-			},
+			-- { -- Panel 2
+			-- 	layers = {
+			-- 		{image = "thumbs/panel_5.png"},
+			-- 	}
+			-- },
 		}
 	},
 }

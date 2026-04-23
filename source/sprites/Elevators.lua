@@ -38,12 +38,13 @@ function Elevators:init()
 
     -- set text for each interaction
     local leftElevatorText = {
-        {"What floor?", "Just kidding. Guests only."},
-        {"Guests only."}
+        -- {"What floor?", "Just kidding. Guests only."},
+        -- {"Guests only."}
+        {"asdf"}
     }
     local rightElevatorText = {
         -- {"This one is still out of service..."},
-        {"Um... it seems this one is still out of service.", "Just take the stairs."}
+        {"Um... it seems this one is still out of service.", "I'll use the other one."}
     }
 
     self.leftTextbox = Textbox(leftElevatorText)
@@ -109,9 +110,9 @@ function Elevators:update()
         -- else
         --     self.leftTextbox:getNextLine()
         -- end
-        print("asdfasdf")
+        -- print("asdfasdf")
 
-        isEndSequence = true
+        -- isEndSequence = true
         if isEndSequence then
             GameScene.instance:moveToRoom("north")
             startEndScene()

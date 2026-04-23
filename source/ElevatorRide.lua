@@ -31,11 +31,11 @@ function ElevatorRide:update()
     local isAButtonPressed = pd.buttonJustPressed(pd.kButtonA)
     local isBButtonPressed = pd.buttonJustPressed(pd.kButtonB)
     if self.isInElevator and isAButtonPressed then
-        if not self.textbox.isActive then
-            self.textbox:startDialogue()
-        else
-            self.textbox:getNextLine()
-        end
+        -- if not self.textbox.isActive then
+        --     self.textbox:startDialogue()
+        -- else
+        --     self.textbox:getNextLine()
+        -- end
         print("oiu")
     end
     -- exit the left elevator

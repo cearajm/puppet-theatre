@@ -95,12 +95,18 @@ function Page:update()
     if self.canInteract and isAButtonPressed then
         print("table")
 
+        if not cutsceneHasPlayed then
+            startCutScene(loungeCutscene)
+            cutsceneHasPlayed = true
+            scenesFound += 1
+        else
             if not self.textbox.isActive and not cutsceneIsPlaying then
                 self.textbox:startDialogue()
             else
                 self.textbox:getNextLine()
             end
             self.textbox.currentBlock = 1
+        end
     end
 
     if isAButtonPressed then

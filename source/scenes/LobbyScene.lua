@@ -35,7 +35,8 @@ end
 function scene:init(__sceneProperties)
 	scene.super.init(self)
 
-	gameScene:loadLevel("Elevators")
+	gameScene:loadLevel("LobbyScene")
+	-- gameScene:loadLevel("Elevators")
 	-- gameScene:loadLevel("Window")
 	player:moveTo(200, 120)
 

@@ -49,7 +49,8 @@ function Bell:update()
     if self.canInteract and isAButtonPressed then
         sfx_bell:play()
         self.ringCount += 1
-        print(self.ringCount)
+        -- print(self.ringCount)
+        print("scenes found: ", scenesFound)
         -- Panels.Settings.snapToPanels = true
         -- Panels.start(comicData)
         

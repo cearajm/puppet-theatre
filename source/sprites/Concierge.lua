@@ -42,7 +42,8 @@ function Concierge:init()
 
     local goodText = {
         {"Very good, Puppet. You are truly the heart of this hotel.",
-        "In fact, we staff have prepared a gift for you. To show our gratitude."}
+        "In fact, we staff have prepared a gift for you. To show our gratitude.",
+        "You'll find it in the staff basement."}
     }
     local badText = {
         {"Is that so...? I see.",
@@ -86,11 +87,11 @@ function Concierge:update()
     if self.canInteract and isAButtonPressed then
         -- set dialogue to display: before vs after cutscene
         -- scenesFound = 2
-        if scenesFound < 2 then
+        if scenesFound < 3 then
             self.currentTextbox = self.textbox
 
         -- play cutscene when all comics have been found
-        elseif scenesFound == 2 then
+        elseif scenesFound == 3 then
             if not cutsceneHasPlayed then
                 startCutScene(conciergeCutscene)
                 cutsceneHasPlayed = true
@@ -101,7 +102,7 @@ function Concierge:update()
         if not cutsceneIsPlaying then
             -- after cutscene, set textbox based on the selected choices
             if cutsceneHasPlayed then
-                local result = Panels.vars.garden + Panels.vars.garden + Panels.vars.garden
+                result = Panels.vars.garden + Panels.vars.elevators + Panels.vars.lounge
                 if result < 3 then
                     self.currentTextbox = self.badTextbox
                 elseif result == 3 then
