@@ -96,7 +96,7 @@ function Page:update()
         print("table")
 
         if not cutsceneHasPlayed then
-            startCutScene(loungeCutscene)
+            startCutScene(pageCutscene)
             cutsceneHasPlayed = true
             scenesFound += 1
         else

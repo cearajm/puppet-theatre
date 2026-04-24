@@ -24,6 +24,7 @@ import 'myComicData.lua'
 -- mine
 import 'assets'
 import 'sprites'
+import 'menu'
 
 
 local pd <const> = playdate
@@ -62,6 +63,8 @@ local elevatorSprite = gfx.sprite.new(elevator)
 
 local baseY = 1200
 local velocity = 20
+
+local isActive = false
 
 
 
@@ -138,40 +141,55 @@ local function init()
     Panels.Settings.defaultFrame = { margin = 4, gap = 8 }
     gfx.setFontFamily(gfx.getFont(gfx.font.kVariantBold))
     
+    -- Player.instance.canMove = false
+    Player.instance:remove()
     
-    Noble.new(LobbyScene)
-    LobbyScene:start()
+    -- Noble.new(LobbyScene)
+    -- LobbyScene:start()
     musicPlayer:setVolume(0.6)
     musicPlayer:play()
 
+    showMenu()
+
 end
 
+local gameState = "stopped"
 
 function pd.update()
     gfx.sprite.update()
 
-    if cutsceneIsPlaying then
-        Panels.update()
-    elseif isEndScene then
-        scrollElevator()
-    else
-        LobbyScene.update()
-    end
-    pd.timer.updateTimers()
+    if gameState == "stopped" and pd.buttonJustPressed(pd.kButtonA) then
+        gameState = "active"
+        Noble.new(LobbyScene)
+        LobbyScene:start()
 
 
-    if pd.buttonIsPressed(pd.kButtonA) then
-        print("result: ", result)
-        if atBottom and not endHasPlayed then
-            endHasPlayed = true
-            isEndScene = false
-            if result == 3 then
-                startCutScene(promotionCutscene)
-            else
-                startCutScene(puppetCutscene)
+    elseif gameState == "active" then
+    
+        if cutsceneIsPlaying then
+            Panels.update()
+        elseif isEndScene then
+            scrollElevator()
+        else
+            LobbyScene.update()
+        end
+        pd.timer.updateTimers()
+
+
+        if pd.buttonIsPressed(pd.kButtonA) then
+            print("result: ", result)
+            if atBottom and not endHasPlayed then
+                endHasPlayed = true
+                isEndScene = false
+                if result == 3 then
+                    startCutScene(promotionCutscene)
+                else
+                    startCutScene(puppetCutscene)
+                end
             end
         end
     end
+    
 end
 
 function resetGame()

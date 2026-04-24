@@ -19,7 +19,7 @@ ConciergePanels = {
 				borderless = true,
 				layers = {
 					{
-						text = "so, what do you think?",
+						text = "So, what have you to report?",
 						color = Panels.Color.WHITE,
 
 						alignment = Panels.TextAlignment.CENTER,
@@ -34,34 +34,73 @@ ConciergePanels = {
 			{
 				choiceList = {
 					buttons = {
-						{ label = "i am proud of our staff", var = { key = "garden", value = 1} },
+						{ label = "we'll need to order more tulips", var = { key = "garden", value = 1} },
+						-- { label = "can we adopt a dog?", var = { key = "garden", value = 1} },
 						{ label = "i need to kick that lady", var = { key = "garden", value = 0} }
+						-- { label = "i need to kick that lady", var = { key = "garden", value = 0} }
 					}
 				}
 			},
+			-- {
+			-- 	layers = {
+			-- 		{image = "thumbs/panel_2.png"}
+			-- 	}
+			-- },
 			{
+				borderless = true,
 				layers = {
-					{image = "thumbs/panel_2.png"}
+					{
+						text = "Any suggestions or ideas?",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
 				}
 			},
 			{
 				choiceList = {
 					buttons = {
-						{ label = "our reputation is impeccable", var = { key = "elevators", value = 1} },
-						{ label = "that guy needs to be poisoned for real", var = { key = "elevators", value = 0} }
+						-- { label = "our reputation is impeccable", var = { key = "elevators", value = 1} },
+						-- { label = "that guy needs to be poisoned for real", var = { key = "elevators", value = 0} }
+						{ label = "our uniforms might be outdated", var = { key = "elevators", value = 1} },
+						-- { label = "", var = { key = "elevators", value = 0} },
+						{ label = "we should all start carrying knives", var = { key = "elevators", value = 0} }
 					}
 				}
 			},
+			-- {
+			-- 	layers = {
+			-- 		{image = "thumbs/panel_2.png"}
+			-- 	}
+			-- },
 			{
+				borderless = true,
 				layers = {
-					{image = "thumbs/panel_2.png"}
+					{
+						text = "What are you thinking?",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
 				}
 			},
 			{
 				choiceList = {
 					buttons = {
 						{ label = "this work is important", var = { key = "lounge", value = 1} },
-						{ label = "gonna push that rich kid off the mountain", var = { key = "lounge", value = 0} }
+						{ label = "gonna push that rich kid off the mountain", var = { key = "lounge", value = 0} },
+						-- { label = "shrivel fester wither and rot", var = { key = "lounge", value = 0} },
+						-- { label = "gonna push that rich kid off the mountain", var = { key = "lounge", value = 0} }
 					}
 				}
 			},
@@ -145,7 +184,7 @@ puppetEndPanels = {
 				borderless = true,
 				layers = {
 					{
-						text = "ending in which you get eaten",
+						text = "why did you say those things? isn't this your home?",
 						color = Panels.Color.WHITE,
 
 						alignment = Panels.TextAlignment.CENTER,
@@ -159,7 +198,35 @@ puppetEndPanels = {
 				borderless = true,
 				layers = {
 					{
-						text = "and the staff just start killing ppl i guess.",
+						text = "you never learn! this is getting really, really old.",
+						color = Panels.Color.WHITE,
+						
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+					}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "luxury isn't about you. don't be so selfish, it's sickening.",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+					}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "have your tantrum, then try again.",
 						color = Panels.Color.WHITE,
 
 						alignment = Panels.TextAlignment.CENTER,
@@ -186,7 +253,55 @@ MaidPanels = {
 				borderless = true,
 				layers = {
 					{
-						text = "[ imagine there is a maid comic here and it's really good ]",
+						text = "my wife will be along shortly. she's a slow walker, especially in those ridiculous heels.",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "the woman was whinging in the car for hours, about some frivolous thing! how ungrateful.",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "the mountain road is quite steep, isn't it? good, the trek will tire her out.",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "we love coming here. the long drive up is quite refreshing, when you're alone.",
 						color = Panels.Color.WHITE,
 
 						alignment = Panels.TextAlignment.CENTER,
@@ -215,7 +330,55 @@ PagePanels = {
 				borderless = true,
 				layers = {
 					{
-						text = "[ dinner time ]",
+						text = "it's great, man. everybody works so hard, and they really see my vision.",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "nobody even argues with me anymore. it's such fun to make a show of firing someone, haha.",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "geez, people can be so desperate, it's embarrassing. why can't they just relax like us?",
+						color = Panels.Color.WHITE,
+
+						alignment = Panels.TextAlignment.CENTER,
+						x = 40,
+						y = 80,
+						rect = {width = 300, height = 240},
+						effect = {type = Panels.Effect.TYPE_ON},
+						-- margin = {left = 80, right = 40}
+					}
+				}
+			},
+			{
+				borderless = true,
+				layers = {
+					{
+						text = "but you're cool man, you get it. it's chill work for you guys up here. here's a tip, our thanks.",
 						color = Panels.Color.WHITE,
 
 						alignment = Panels.TextAlignment.CENTER,
@@ -266,7 +429,7 @@ GardenPanels = {
 				borderless = true,
 				layers = {
 					{
-						text = "she used to be such a dreadful beast! fortunately, she responds very well to a swift kick ~",
+						text = "she used to be such a dreadful beast! fortunately, she responds very well to a hard and swift kick ~",
 						color = Panels.Color.WHITE,
 
 						alignment = Panels.TextAlignment.CENTER,
